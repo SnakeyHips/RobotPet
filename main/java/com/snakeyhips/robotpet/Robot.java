@@ -9,7 +9,7 @@ public class Robot {
     private int waste;
     private Boolean illness;
     
-    public void setUUID(UUID id){
+    public void setId(UUID id){
         this.id = id;
     }
     public UUID getId(){
