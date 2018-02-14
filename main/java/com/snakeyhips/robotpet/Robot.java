@@ -7,6 +7,7 @@ public class Robot {
     private int fatigue;
     private int naughty;
     private int waste;
+    private Boolean illness;
     
     public void setUUID(UUID id){
         this.id = id;
@@ -62,5 +63,12 @@ public class Robot {
     }
     public int getWaste(){
         return waste;
+    }
+    
+    public void SetIllness(Boolean illness){
+        this.illness = illness;
+    }
+    public Boolean getIllness(){
+        return illness;
     }
 }
