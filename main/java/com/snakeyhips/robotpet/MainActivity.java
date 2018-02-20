@@ -76,4 +76,11 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
         }
     }
+    
+    
+    //Back button opens dialog to ask if want to close
+    @Override
+    public void onBackPressed() {
+        //do back button stuff here
+    }
 }
