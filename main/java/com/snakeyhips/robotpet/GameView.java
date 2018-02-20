@@ -4,8 +4,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   private MainThread thread;
   private RobotSprite robotSprite;
-  private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-  private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
+  //private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+  //private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
 
   public GameView(Context context) {
       super(context);
