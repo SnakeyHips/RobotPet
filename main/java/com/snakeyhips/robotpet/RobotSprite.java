@@ -10,4 +10,8 @@ public class RobotSprite{
     public void draw(Canvas canvas){
         canvas.drawBitmap(sprite, 100, 100, null);
     }
+    
+    public void update(){
+        //put stuff in here
+    }
 }
