@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         
         //Set up UI objects
         getSupportActionBar().setTitle("Title Test");      
-        mSpeechTeaxt = (TextView) findViewById(R.id.mSpeechText);
+        mSpeechText = (TextView) findViewById(R.id.mSpeechText);
         mGameButton = (FloatingActionButton) findViewById(R.id.mGameButton);
         mFoodButton = (FloatingActionButton) findViewById(R.id.mFoodButton);
         mCurrentTime = System.currentTimeMillis();
