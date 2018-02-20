@@ -21,11 +21,14 @@ public class MainActivity extends AppCompatActivity {
     
     //Robot object
     private Robot mRobot;
+    
+    private GameView mGameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(new GameView(this));
+        
         setSupportActionBar(findViewByID(R.id.mToolbar));
         
         //Set up UI objects
