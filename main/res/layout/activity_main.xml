@@ -15,15 +15,10 @@
        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <TextView
-        android:id="@+id/mTestText"
+    <SurfaceView
+        android:id="@+id/mSurface"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test Text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"/>
     
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/mGameButton"
