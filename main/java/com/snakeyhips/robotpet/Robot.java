@@ -1,3 +1,5 @@
+package com.snakeyhips.robotpet;
+
 public class Robot {
     private UUID id;
     private String name;
