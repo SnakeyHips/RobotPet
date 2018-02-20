@@ -70,12 +70,20 @@ public class MainActivity extends AppCompatActivity {
             mRobot.setFatigue(sharedPref.getInt("mRobotFatigue"), 0));
             mRobot.setNaughty(sharedPref.getInt("mRobotNaughty"), 0));
             mRobot.setWaste(sharedPref.getInt("mRobotWaste"), 0));
-            mRobot.setAge(sharedPref.getInt("mRobotAge"), 0));
             mRobot.setIllness(sharedPref.getBoolean("mRobotIllness", false));
         } catch (Exception e){
             e.printStackTrace();
-            //Initialise mRobot
+            //Initialise mRobot possibly not needed if above works
             mRobot = new Robot();
+            mRobot.setId(new UUID());
+            mRobot.setName("Robot Name");
+            mRobot.setAge(0);
+            mRobot.setHappy(50);
+            mRobot.setHunger(50);
+            mRobot.setFatigue(0);
+            mRobot.setNaughty(0);
+            mRobot.setWaste(0);
+            mRobot.setIllness(false);
         }
         
     }
