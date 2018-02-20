@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     
     //Robot object
     private Robot mRobot;
+    private long mCurrentTime;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Title Test");              
         mGameButton = (FloatingActionButton) findViewById(R.id.mGameButton);
         mFoodButton = (FloatingActionButton) findViewById(R.id.mFoodButton);
+        mCurrentTime = System.currentTimeMillis();
         
         //Set up FAB listeners
         mGameButton.setOnClickListener(
