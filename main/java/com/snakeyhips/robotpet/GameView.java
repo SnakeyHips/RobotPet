@@ -3,6 +3,7 @@ package com.snakeyhips.robotpet;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   private MainThread thread;
+  private RobotSprite robotSprite;
 
   public GameView(Context context) {
       super(context);
@@ -21,6 +22,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   public void surfaceCreated(SurfaceHolder holder) {
     thread.setRunning(true);
     tread.start();
+    robotSprite = new RobotSprite(BitmapFactory.decodeResource(getResources(),R.drawable.babyRobot));
   }
 
   @Override
@@ -49,6 +51,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
       Paint paint = new Paint();
       paint.setColor(Color.rgb(250, 0, 0));
       canvas.drawRect(100, 100, 200, 200, paint);
+      robotSprite.draw(canvas);
     }
   }
 }
