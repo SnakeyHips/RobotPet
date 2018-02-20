@@ -15,8 +15,8 @@
        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <SurfaceView
-        android:id="@+id/mSurface"
+    <com.snakeyhips.robotpet.GameView
+        android:id="@+id/mGameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     
