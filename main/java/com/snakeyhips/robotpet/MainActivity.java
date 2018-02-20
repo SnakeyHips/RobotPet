@@ -9,9 +9,17 @@ import android.support.design.widget.FloatingActionButton;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     
+    //UI object references
+    private Toolbar mToolbar;
+    private TextView mTestText;
+    private FloatingActionButton mGameButton;
+    private FloatingActionButton mFoodButton;
+    
+    //Robot object
     private Robot mRobot;
 
     @Override
@@ -20,8 +28,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setSupportActionBar(findViewByID(R.id.mToolbar));
         
-        //Set ActionBar Title
+        //Set up UI objects
         getSupportActionBar().setTitle("Title Test");
+        mTestText = (TextView) findViewById(R.id.mTestText);
+        mGameButton = (FloatingActionButton) findViewById(R.id.mGameButton);
+        mFoodButton = (FloatingActionButton) findViewById(R.id.mFoodButton);
+        
+        //Set up FAB listeners
+        mGameButton.setOnClickListener(
+                new FloatingActionButton.OnClickListener(){
+
+                    @Override
+                    public void onClick(View v) {
+                        mTestText.setText("Game Pressed");
+                        Toast toast = Toast.makeText(getApplicationContext(), "Game Pressed", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                }
+        );
+        mFoodButton.setOnClickListener(
+                new FloatingActionButton.OnClickListener(){
+
+                    @Override
+                    public void onClick(View v) {
+                        mTestText.setText("Food Pressed");
+                        Toast toast = Toast.makeText(getApplicationContext(), "Food Pressed", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                }
+        );
         
         //Retrieve previous data from SharedPreferences
         try{
