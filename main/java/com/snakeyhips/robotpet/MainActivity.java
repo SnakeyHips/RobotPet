@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     
     //UI object references
     private Toolbar mToolbar;
+    private TextView mSpeechText;
     private FloatingActionButton mGameButton;
     private FloatingActionButton mFoodButton;
     
@@ -29,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(findViewByID(R.id.mToolbar));
         
         //Set up UI objects
-        getSupportActionBar().setTitle("Title Test");              
+        getSupportActionBar().setTitle("Title Test");      
+        mSpeechTeaxt = (TextView) findViewById(R.id.mSpeechText);
         mGameButton = (FloatingActionButton) findViewById(R.id.mGameButton);
         mFoodButton = (FloatingActionButton) findViewById(R.id.mFoodButton);
         mCurrentTime = System.currentTimeMillis();
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             mRobot.setNaughty(sharedPref.getInt("mRobotNaughty"), 0));
             mRobot.setWaste(sharedPref.getInt("mRobotWaste"), 0));
             mRobot.setIllness(sharedPref.getBoolean("mRobotIllness", false));
+            mSpeechText.setText("Saved");
         } catch (Exception e){
             e.printStackTrace();
             //Initialise mRobot possibly not needed if above works
@@ -84,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
             mRobot.setNaughty(0);
             mRobot.setWaste(0);
             mRobot.setIllness(false);
+            mSpeechText.setText("New");
         }
         
     }
