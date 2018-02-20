@@ -15,15 +15,12 @@ public class MainActivity extends AppCompatActivity {
     
     //UI object references
     private Toolbar mToolbar;
-    private SurfaceView mSurface;
     private FloatingActionButton mGameButton;
     private FloatingActionButton mFoodButton;
     
     //Robot object
     private Robot mRobot;
     
-    private GameView mGameView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(findViewByID(R.id.mToolbar));
         
         //Set up UI objects
-        getSupportActionBar().setTitle("Title Test");
-        mSurface = (SurfaceView) findViewById(R.id.mSurface);
-        mSurface.getHolder().addCallback(new GameView(this));              
+        getSupportActionBar().setTitle("Title Test");              
         mGameButton = (FloatingActionButton) findViewById(R.id.mGameButton);
         mFoodButton = (FloatingActionButton) findViewById(R.id.mFoodButton);
         
