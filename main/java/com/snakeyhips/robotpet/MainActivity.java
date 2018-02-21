@@ -1,15 +1,19 @@
 package com.snakeyhips.robotpet;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
     
@@ -27,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setSupportActionBar(findViewByID(R.id.toolbar));
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         
         //Set up UI objects
         getSupportActionBar().setTitle("Title Test");      
@@ -37,23 +41,23 @@ public class MainActivity extends AppCompatActivity {
         currentTime = System.currentTimeMillis();
         
         //Set up FAB listeners
-        mGameButton.setOnClickListener(
+        gameButton.setOnClickListener(
                 new FloatingActionButton.OnClickListener(){
 
                     @Override
                     public void onClick(View v) {
-                        mTestText.setText("Game Pressed");
+                        speechText.setText("Game Pressed");
                         Toast toast = Toast.makeText(getApplicationContext(), "Game Pressed", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 }
         );
-        mFoodButton.setOnClickListener(
+        foodButton.setOnClickListener(
                 new FloatingActionButton.OnClickListener(){
 
                     @Override
                     public void onClick(View v) {
-                        mTestText.setText("Food Pressed");
+                        speechText.setText("Food Pressed");
                         Toast toast = Toast.makeText(getApplicationContext(), "Food Pressed", Toast.LENGTH_SHORT);
                         toast.show();
                     }
@@ -64,30 +68,30 @@ public class MainActivity extends AppCompatActivity {
         try{
             SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
             
-            mRobot.setId(UUID.fromString(sharedPref.getString("robotId"), ""));
-            mRobot.setName(sharedPref.getString("robotName"), ""));
-            mRobot.setAge(sharedPref.getInt("robotAge"), 0));
-            mRobot.setHappy(sharedPref.getInt("robotHappy"), 0));
-            mRobot.setHunger(sharedPref.getInt("robotHunger"), 0));
-            mRobot.setFatigue(sharedPref.getInt("robotFatigue"), 0));
-            mRobot.setNaughty(sharedPref.getInt("robotNaughty"), 0));
-            mRobot.setWaste(sharedPref.getInt("robotWaste"), 0));
-            mRobot.setIllness(sharedPref.getBoolean("robotIllness", false));
-            mSpeechText.setText("Saved");
+            //robot.setId(UUID.fromString(sharedPref.getString("robotId"), ""));
+            robot.setName(sharedPref.getString("robotName", ""));
+            robot.setAge(sharedPref.getInt("robotAge", 0));
+            robot.setHappy(sharedPref.getInt("robotHappy", 0));
+            robot.setHunger(sharedPref.getInt("robotHunger", 0));
+            robot.setFatigue(sharedPref.getInt("robotFatigue", 0));
+            robot.setNaughty(sharedPref.getInt("robotNaughty", 0));
+            robot.setWaste(sharedPref.getInt("robotWaste", 0));
+            robot.setIllness(sharedPref.getBoolean("robotIllness", false));
+            speechText.setText("Saved");
         } catch (Exception e){
             e.printStackTrace();
             //Initialise mRobot possibly not needed if above works
-            mRobot = new Robot();
-            mRobot.setId(new UUID());
-            mRobot.setName("Robot Name");
-            mRobot.setAge(0);
-            mRobot.setHappy(50);
-            mRobot.setHunger(50);
-            mRobot.setFatigue(0);
-            mRobot.setNaughty(0);
-            mRobot.setWaste(0);
-            mRobot.setIllness(false);
-            mSpeechText.setText("New");
+            robot = new Robot();
+            //robot.setId(new UUID());
+            robot.setName("Robot Name");
+            robot.setAge(0);
+            robot.setHappy(50);
+            robot.setHunger(50);
+            robot.setFatigue(0);
+            robot.setNaughty(0);
+            robot.setWaste(0);
+            robot.setIllness(false);
+            speechText.setText("New");
         }
         
     }
@@ -98,27 +102,28 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.settings_menu, menu);
         return true;
     }
-    
+
+    /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.settingsAbout:
+            case 0:
                 //do stuff
                 return true;
         }
-    }
+    }*/
     
     //Saves state of Robot when activity is paused
     @Override
     public void onPause(){
         super.onPause();
         
-        if(mRobot != null){
+        if(robot != null){
             SharedPreferences mainPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = mainPref.edit();
             
-            editor.putString("robotId", robot.getId().toString());
+            //editor.putString("robotId", new UUID(robot.getId()));
             editor.putString("robotName", robot.getName());
             editor.putInt("robotAge", robot.getAge());
             editor.putInt("robotHappy", robot.getHappy());

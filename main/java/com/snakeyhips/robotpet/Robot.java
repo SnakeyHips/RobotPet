@@ -1,5 +1,7 @@
 package com.snakeyhips.robotpet;
 
+import java.util.UUID;
+
 public class Robot {
     private UUID id;
     private String name;
@@ -25,49 +27,49 @@ public class Robot {
         return name;
     }
     
-    public void SetAge(int age){
+    public void setAge(int age){
         this.age = age;
     }
     public int getAge(){
         return age;
     }
     
-    public void SetHappy(int happy){
+    public void setHappy(int happy){
         this.happy = happy;
     }
     public int getHappy(){
         return happy;
     }
     
-    public void SetHunger(int hunger){
+    public void setHunger(int hunger){
         this.hunger = hunger;
     }
     public int getHunger(){
         return hunger;
     }
 
-    public void SetFatigue(int fatigue){
+    public void setFatigue(int fatigue){
         this.fatigue = fatigue;
     }
     public int getFatigue(){
         return fatigue;
     }
     
-    public void SetNaughty(int naughty){
+    public void setNaughty(int naughty){
         this.naughty = naughty;
     }
     public int getNaughty(){
         return naughty;
     }
     
-    public void SetWaste(int waste){
+    public void setWaste(int waste){
         this.waste = waste;
     }
     public int getWaste(){
         return waste;
     }
     
-    public void SetIllness(boolean illness){
+    public void setIllness(boolean illness){
         this.illness = illness;
     }
     public boolean getIllness(){

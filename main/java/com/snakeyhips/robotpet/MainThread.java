@@ -1,5 +1,8 @@
 package com.snakeyhips.robotpet;
 
+import android.graphics.Canvas;
+import android.view.SurfaceHolder;
+
 public class MainThread extends Thread {
     private SurfaceHolder surfaceHolder;
     private GameView gameView;

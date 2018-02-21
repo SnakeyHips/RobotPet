@@ -1,5 +1,13 @@
 package com.snakeyhips.robotpet;
 
+import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+
 public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   private MainThread thread;
@@ -23,8 +31,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
     thread.setRunning(true);
-    tread.start();
-    robotSprite = new RobotSprite(BitmapFactory.decodeResource(getResources(),R.drawable.babyRobot));
+    thread.start();
+    robotSprite = new RobotSprite(BitmapFactory.decodeResource(getResources(),R.drawable.robot));
   }
 
   @Override

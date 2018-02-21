@@ -1,5 +1,8 @@
 package com.snakeyhips.robotpet;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+
 public class RobotSprite{
     private Bitmap sprite;
     
