@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -15,8 +16,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   //private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
   //private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
 
-  public GameView(Context context) {
-      super(context);
+  public GameView(Context context, AttributeSet attrs) {
+      super(context, attrs);
 
       getHolder().addCallback(this);
       thread = new MainThread(getHolder(), this);

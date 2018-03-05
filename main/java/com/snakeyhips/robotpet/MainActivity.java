@@ -1,5 +1,6 @@
 package com.snakeyhips.robotpet;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         
         //Set up UI objects
-        getSupportActionBar().setTitle("Title Test");      
-        speechText = (TextView) findViewById(R.id.speechText);
-        gameButton = (FloatingActionButton) findViewById(R.id.gameButton);
-        foodButton = (FloatingActionButton) findViewById(R.id.foodButton);
+        getSupportActionBar().setTitle("Title Test");
+        speechText = findViewById(R.id.speechText);
+        gameButton = findViewById(R.id.gameButton);
+        foodButton = findViewById(R.id.foodButton);
         currentTime = System.currentTimeMillis();
         
         //Set up FAB listeners
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
         
-        //Retrieve previous data from SharedPreferences
+        /*Retrieve previous data from SharedPreferences
         try{
             SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
             
@@ -92,29 +93,11 @@ public class MainActivity extends AppCompatActivity {
             robot.setWaste(0);
             robot.setIllness(false);
             speechText.setText("New");
-        }
+        }*/
         
     }
     
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.settings_menu, menu);
-        return true;
-    }
-
-    /*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case 0:
-                //do stuff
-                return true;
-        }
-    }*/
-    
-    //Saves state of Robot when activity is paused
+    /*Saves state of Robot when activity is paused
     @Override
     public void onPause(){
         super.onPause();
@@ -134,8 +117,25 @@ public class MainActivity extends AppCompatActivity {
             editor.putBoolean("robotIllness", robot.getIllness());
             editor.apply();
         }
+    }*/
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings_menu, menu);
+        return true;
     }
-    
+
+    /*
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case 0:
+                //do stuff
+                return true;
+        }
+    }*/
     
     //Back button opens dialog to ask if want to close
     @Override
