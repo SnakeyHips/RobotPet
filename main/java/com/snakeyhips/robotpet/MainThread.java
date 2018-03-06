@@ -8,15 +8,13 @@ public class MainThread extends Thread {
     private GameView gameView;
     private boolean running;
     public static Canvas canvas;
-    private int targetFPS = 60;
+    private static final int TARGET_FPS = 60;
     private double averageFPS;
     
     public MainThread(SurfaceHolder surfaceHolder, GameView gameView) {
-
         super();
         this.surfaceHolder = surfaceHolder;
         this.gameView = gameView;
-
     }
     
     @Override
@@ -26,7 +24,7 @@ public class MainThread extends Thread {
         long waitTime;   
         long totalTime = 0;   
         int frameCount = 0;   
-        long targetTime = 1000 / targetFPS;
+        long targetTime = 1000 / TARGET_FPS;
 
         while (running) {       
             startTime = System.nanoTime();       
@@ -59,7 +57,7 @@ public class MainThread extends Thread {
 
             totalTime += System.nanoTime() - startTime;       
             frameCount++;       
-            if (frameCount == targetFPS)        {           
+            if (frameCount == TARGET_FPS)        {           
                 averageFPS = 1000 / ((totalTime / frameCount) / 1000000);           
                 frameCount = 0;           
                 totalTime = 0;           
