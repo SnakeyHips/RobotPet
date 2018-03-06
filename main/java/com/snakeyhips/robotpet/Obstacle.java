@@ -5,10 +5,14 @@ import android.graphics.Canvas;
 public class Obstacle implements GameObject{
       private Rect rect;
       private int color;
+      private int startX;
+      private int robotGap;
     
-  public Obstacle(Rect rect, int color) {
+  public Obstacle(Rect rect, int color int startX, int robotGap) {
       this.rect = rect;
-      this.color = color
+      this.color = color;
+      this.startX = startX;
+      this.robotGap = robotGap;
   }
   
   public boolean playerCollide(RobotSprite robot) {
