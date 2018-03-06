@@ -2,6 +2,9 @@ package com.snakeyhips.robotpet;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
 
 public class RobotSprite implements GameObject{
     //private Bitmap sprite;
@@ -10,7 +13,7 @@ public class RobotSprite implements GameObject{
     
     public RobotSprite(Rect rect, int color) {
         this.rect = rect;
-        this.color = color
+        this.color = color;
     }
     
     public Rect getRect(){

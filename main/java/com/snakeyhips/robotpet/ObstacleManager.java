@@ -1,5 +1,9 @@
 package com.snakeyhips.robotpet;
 
+import android.graphics.Canvas;
+
+import java.util.ArrayList;
+
 public class ObstacleManager {
     //Higher index = lower on screen = higher y value
     private ArrayList<Obstacle> obstacles;
@@ -38,7 +42,7 @@ public class ObstacleManager {
         for(Obstacle ob : obstacles){
             ob.incrementY(speed * elaspedTime);
         }
-        if(obstacles.get(obstacles.size - 1).getRect().top >= Constants.SCREEN_HEIGHT){
+        if(obstacles.get(obstacles.size() - 1).getRect().top >= Constants.SCREEN_HEIGHT){
             int startX = (int)(Math.random()*(Constants.SCREEN_WIDTH - robotGap));
             obstacles.add(0, new Obstacle(color, startX,
             obstacles.get(0).getRect().top + obstacleHeight - obstacleGap, obstacleHeight, robotGap));

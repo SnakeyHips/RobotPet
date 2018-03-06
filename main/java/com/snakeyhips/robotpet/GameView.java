@@ -4,8 +4,10 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -40,7 +42,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   public void surfaceCreated(SurfaceHolder holder) {
     thread.setRunning(true);
     thread.start();
-    robotSprite = new RobotSprite(BitmapFactory.decodeResource(getResources(),R.drawable.robot));
+      robotSprite = new RobotSprite(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
+    //robotSprite = new RobotSprite(BitmapFactory.decodeResource(getResources(),R.drawable.robot));
   }
 
   @Override
@@ -60,7 +63,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   //Handle touch events in here
   @Override
   public boolean onTouchEvent(MotionEvent event){
-      switch(Event.getAction()){
+      switch(event.getAction()){
         case MotionEvent.ACTION_DOWN:
         case MotionEvent.ACTION_MOVE:
           robotPoint.set((int)event.getX(), (int)event.getY());          

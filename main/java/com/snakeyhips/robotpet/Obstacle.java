@@ -1,6 +1,8 @@
 package com.snakeyhips.robotpet;
 
 import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
 public class Obstacle implements GameObject{
       private Rect rect;
@@ -31,13 +33,12 @@ public class Obstacle implements GameObject{
     if(rect.contains(robot.getRect().left, robot.getRect().top)
       || rect.contains(robot.getRect().right, robot.getRect().top)
       || rect.contains(robot.getRect().left, robot.getRect().bottom)
-      || rect.contains(robot.getRect().right, robot.getRect().bottom){
+      || rect.contains(robot.getRect().right, robot.getRect().bottom)){
         return true;
       } else {
         return false;
       }
     }
-  }
   
   public void draw(Canvas canvas){
       //canvas.drawBitmap(sprite, 100, 100, null);
