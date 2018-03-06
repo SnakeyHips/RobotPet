@@ -13,6 +13,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   private MainThread thread;
   private RobotSprite robotSprite;
+  private Point robotPoint;
   //private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
   //private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
 
@@ -21,6 +22,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 
       getHolder().addCallback(this);
       thread = new MainThread(getHolder(), this);
+      robotSprite = new RobotSprite(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
+      robotPoint = new Point(150, 150);
       setFocusable(true);
   }
   
@@ -53,21 +56,28 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   //Handle touch events in here
   @Override
   public boolean onTouchEvent(MotionEvent event){
-    return super.onTouchEvent(event);
+      switch(Event.getAction()){
+        case MotionEvent.ACTION_DOWN:
+        case MotionEvent.ACTION_MOVE:
+          robotPoint.set((int)event.getX(), (int)event.getY());          
+      }
+      return true;
+      //return super.onTouchEvent(event);
   }
   
   public void update() {
-
+      robotSprite.update(robotPoint);
   }
   
   @Override
   public void draw(Canvas canvas) {
     super.draw(canvas);
     if(canvas != null) {
-      canvas.drawColor(Color.YELLOW);
+      /*canvas.drawColor(Color.YELLOW);
       Paint paint = new Paint();
       paint.setColor(Color.rgb(250, 0, 0));
-      canvas.drawRect(100, 100, 200, 200, paint);
+      canvas.drawRect(100, 100, 200, 200, paint);*/
+      canvas.drawColor(Color.YELLOW);
       robotSprite.draw(canvas);
     }
   }
