@@ -13,6 +13,9 @@ public class RobotSprite implements GameObject{
         this.color = color
     }
     
+    public Rect getRect(){
+        return rect;
+    }
     
     public void draw(Canvas canvas){
         //canvas.drawBitmap(sprite, 100, 100, null);
