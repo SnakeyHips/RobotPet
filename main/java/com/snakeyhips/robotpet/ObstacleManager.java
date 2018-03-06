@@ -24,7 +24,7 @@ public class ObstacleManager {
     
     private void populateObstacles(){
       int currY = -5*Constants.SCREEN_HEIGHT/4;
-      while(obstacles.get(obstacles.size() - 1).getRect().bottom < 0){
+      while(currY < 0){
         int startX = (int)(Math.random()*(Constants.SCREEN_WIDTH - robotGap));
         obstacles.add(new Obstacle(color, startX, currY, obstacleHeight, robotGap));
         currY += obstacleHeight + obstacleGap;
@@ -41,7 +41,8 @@ public class ObstacleManager {
         if(obstacles.get(obstacles.size - 1).getRect().top >= Constants.SCREEN_HEIGHT){
             int startX = (int)(Math.random()*(Constants.SCREEN_WIDTH - robotGap));
             obstacles.add(0, new Obstacle(color, startX,
-            obstacles.get(0).getRect().top + obstacleHeight + obstacleGap, obstacleHeight, robotGap));
+            obstacles.get(0).getRect().top + obstacleHeight - obstacleGap, obstacleHeight, robotGap));
+            obstacles.remove(obstacles.size() - 1);
         }
     }
     
