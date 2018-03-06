@@ -73,10 +73,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   public void draw(Canvas canvas) {
     super.draw(canvas);
     if(canvas != null) {
-      /*canvas.drawColor(Color.YELLOW);
-      Paint paint = new Paint();
-      paint.setColor(Color.rgb(250, 0, 0));
-      canvas.drawRect(100, 100, 200, 200, paint);*/
       canvas.drawColor(Color.YELLOW);
       robotSprite.draw(canvas);
     }
