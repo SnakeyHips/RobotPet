@@ -4,15 +4,16 @@ import android.graphics.Canvas;
 
 public class Obstacle implements GameObject{
       private Rect rect;
+      private Rect rect2;
       private int color;
       private int startX;
+      private int startY;
       private int robotGap;
     
-  public Obstacle(Rect rect, int color int startX, int robotGap) {
-      this.rect = rect;
+  public Obstacle(int color, int startX, int startY, int rectHeight, int robotGap) {
       this.color = color;
-      this.startX = startX;
-      this.robotGap = robotGap;
+      rect = new Rect(0, startY, startX, startY + rectHeight);
+      rect2 = new Rect(startX + robotGap, startY, Constants.SCREEN_WIDTH, startY + rectHeight);
   }
   
   public boolean playerCollide(RobotSprite robot) {
@@ -32,6 +33,7 @@ public class Obstacle implements GameObject{
       Paint paint = new Paint();
       paint.setColor(color);
       canvas.drawRect(rect, paint);
+      canvas.drawRect(rect2, paint);
   }
     
   public void update(){
