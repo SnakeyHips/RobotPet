@@ -26,6 +26,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
       thread = new MainThread(getHolder(), this);
       robotSprite = new RobotSprite(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
       robotPoint = new Point(150, 150);
+      obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
+    
       setFocusable(true);
   }
   
@@ -69,14 +71,16 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   public void update() {
       robotSprite.update(robotPoint);
+      obstacleManager.update();
   }
   
   @Override
   public void draw(Canvas canvas) {
     super.draw(canvas);
     if(canvas != null) {
-      canvas.drawColor(Color.YELLOW);
+      canvas.drawColor(Color.WHITE);
       robotSprite.draw(canvas);
+      obstacleManager.draw(canvas);
     }
   }
 }
