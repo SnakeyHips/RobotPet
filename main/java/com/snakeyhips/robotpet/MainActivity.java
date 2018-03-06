@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         
+        //Get screen dimensions
+        DisplayMetrics = new DisplayMetrics();
+        getWindowManager().GetDefaultDisplay().getMetrics(dm);
+        Constants.SCREEN_WIDTH = dm.widthPixels;
+        Constants.SCREEN_HEIGHT = dm.heightPixels;
+        
         //Set up UI objects
         getSupportActionBar().setTitle("Title Test");
         speechText = findViewById(R.id.speechText);
