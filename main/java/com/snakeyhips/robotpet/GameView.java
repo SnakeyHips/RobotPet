@@ -50,6 +50,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
     }
   }
   
+  //Handle touch events in here
+  @Override
+  public boolean onTouchEvent(MotionEvent event){
+    return super.onTouchEvent(event);
+  }
+  
   public void update() {
 
   }
