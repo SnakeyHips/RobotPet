@@ -15,6 +15,17 @@ public class Obstacle implements GameObject{
       rect = new Rect(0, startY, startX, startY + rectHeight);
       rect2 = new Rect(startX + robotGap, startY, Constants.SCREEN_WIDTH, startY + rectHeight);
   }
+      
+  public Rect getRect(){
+      return rect;
+  }
+      
+  public void incrementY(float y){
+      rect.top += y;
+      rect.bottom += y;
+      rect2.top += y;
+      rect2.bottom += y;
+  }
   
   public boolean playerCollide(RobotSprite robot) {
     if(rect.contains(robot.getRect().left, robot.getRect().top)
