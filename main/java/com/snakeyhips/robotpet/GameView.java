@@ -40,10 +40,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
+    thread = new MainThread(getHolder(), this);
     thread.setRunning(true);
     thread.start();
-      robotSprite = new RobotSprite(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
-    //robotSprite = new RobotSprite(BitmapFactory.decodeResource(getResources(),R.drawable.robot));
   }
 
   @Override
@@ -69,7 +68,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
           robotPoint.set((int)event.getX(), (int)event.getY());          
       }
       return true;
-      //return super.onTouchEvent(event);
   }
   
   public void update() {
