@@ -30,15 +30,8 @@ public class Obstacle implements GameObject{
   }
   
   public boolean playerCollide(RobotSprite robot) {
-    if(rect.contains(robot.getRect().left, robot.getRect().top)
-      || rect.contains(robot.getRect().right, robot.getRect().top)
-      || rect.contains(robot.getRect().left, robot.getRect().bottom)
-      || rect.contains(robot.getRect().right, robot.getRect().bottom)){
-        return true;
-      } else {
-        return false;
-      }
-    }
+      return Rect.intersects(rect, robot.getRect()) || Rect.intersects(rect2, robot.getRect());
+  }
   
   public void draw(Canvas canvas){
       //canvas.drawBitmap(sprite, 100, 100, null);
