@@ -17,6 +17,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   private RobotSprite robotSprite;
   private Point robotPoint;
   private ObstacleManager obstacleManager;
+  private boolean movingPlayer = false;
+  private boolean gameOver = false;
+  private long gameOverTime;
  
   //private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
   //private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
@@ -27,10 +30,18 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
       getHolder().addCallback(this);
       thread = new MainThread(getHolder(), this);
       robotSprite = new RobotSprite(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
-      robotPoint = new Point(150, 150);
+      robotPoint = new Point(Constans.SCREEN_WIDTH/2, 3*Constants.SCREEN_HEIGHT/4);
+      robotSprite.update(robotPoint);
       obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
     
       setFocusable(true);
+  }
+  
+  public void reset(){
+      robotPoint = new Point(Constans.SCREEN_WIDTH/2, 3*Constants.SCREEN_HEIGHT/4);
+      robotSprite.update(robotPoint);
+      obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
+      movingPlayer = false;
   }
   
   @Override
@@ -64,15 +75,35 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   public boolean onTouchEvent(MotionEvent event){
       switch(event.getAction()){
         case MotionEvent.ACTION_DOWN:
+          if(!gameOver && robot.getRect().contains((int)event.getX(), (int)event.getY()){
+            movingPlayer = true;
+          }
+          if(gameOver && System.currentTimeMillis() - gameOverTime >= 2000){
+            reset();
+            gameOver = false;
+          }
+          break;
         case MotionEvent.ACTION_MOVE:
-          robotPoint.set((int)event.getX(), (int)event.getY());          
+          if(!gameOver && movingPlayer){
+            robotPoint.set((int)event.getX(), (int)event.getY()); 
+          }
+          break;
+        case MotionEvent.ACTION_UP:
+             movingPlayer = false;
+             break;
       }
       return true;
   }
   
   public void update() {
+    if(!gameOver){
       robotSprite.update(robotPoint);
       obstacleManager.update();
+      if(obstacleManager.playerCollide(robot)){
+        gameOver = true;
+        gameOvertime = System.currentTimeMillis();
+      }
+    }
   }
   
   @Override
