@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         speechText = findViewById(R.id.speechText);
         gameButton = findViewById(R.id.gameButton);
         foodButton = findViewById(R.id.foodButton);
-        currentTime = System.currentTimeMillis();
         
         //Set up FAB listeners
         gameButton.setOnClickListener(
