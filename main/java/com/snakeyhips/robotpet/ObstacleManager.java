@@ -45,7 +45,7 @@ public class ObstacleManager {
         if(obstacles.get(obstacles.size() - 1).getRect().top >= Constants.SCREEN_HEIGHT){
             int startX = (int)(Math.random()*(Constants.SCREEN_WIDTH - robotGap));
             obstacles.add(0, new Obstacle(color, startX,
-            obstacles.get(0).getRect().top + obstacleHeight - obstacleGap, obstacleHeight, robotGap));
+            obstacles.get(0).getRect().top - obstacleHeight - obstacleGap, obstacleHeight, robotGap));
             obstacles.remove(obstacles.size() - 1);
         }
     }
