@@ -39,7 +39,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   }
   
   public void reset(){
-      robotPoint = new Point(Constans.SCREEN_WIDTH/2, 3*Constants.SCREEN_HEIGHT/4);
+      robotPoint = new Point(Constants.SCREEN_WIDTH/2, 3*Constants.SCREEN_HEIGHT/4);
       robotSprite.update(robotPoint);
       obstacleManager = new ObstacleManager(200, 350, 75, Color.BLACK);
       movingPlayer = false;
