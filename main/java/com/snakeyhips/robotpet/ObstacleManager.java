@@ -48,7 +48,8 @@ public class ObstacleManager {
     public void update(){
         int elaspedTime = (int)(System.currentTimeMillis() - startTime);
         startTime = System.currentTimeMillis();
-        float speed = (float)(Math.sqrt(1 + startTime - initTime/1000.0) *Constants.SCREEN_HEIGHT/10000.0f);
+        //Change initTime divison to change rate of speed
+        float speed = (float)(Math.sqrt(1 + startTime - initTime/2000.0) *Constants.SCREEN_HEIGHT/10000.0f);
         for(Obstacle ob : obstacles){
             ob.incrementY(speed * elaspedTime);
         }
