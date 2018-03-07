@@ -13,6 +13,7 @@ public class ObstacleManager {
     private int color;
     
     private long startTime;
+    private long initTime;
     
     public ObstacleManager(int robotGap, int obstacleGap, int obstacleHeight, int color){
       this.robotGap = robotGap;
@@ -20,7 +21,7 @@ public class ObstacleManager {
       this.obstacleHeight = obstacleHeight;
       this.color = color;
         
-      startTime = System.currentTimeMillis();
+      startTime = initTime = System.currentTimeMillis();
       
       obstacles = new ArrayList<>();
       populateObstacles();
@@ -47,7 +48,7 @@ public class ObstacleManager {
     public void update(){
         int elaspedTime = (int)(System.currentTimeMillis() - startTime);
         startTime = System.currentTimeMillis();
-        float speed = Constants.SCREEN_HEIGHT/10000.0f;
+        float speed = (float)(Math.sqrt(1 + startTime - initTime/1000.0) *Constants.SCREEN_HEIGHT/10000.0f);
         for(Obstacle ob : obstacles){
             ob.incrementY(speed * elaspedTime);
         }
