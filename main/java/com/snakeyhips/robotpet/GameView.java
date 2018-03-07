@@ -20,6 +20,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   private boolean movingPlayer = false;
   private boolean gameOver = false;
   private long gameOverTime;
+  private Rect r = new Rect();
  
   //private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
   //private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
@@ -112,5 +113,23 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
     canvas.drawColor(Color.WHITE);
     robotSprite.draw(canvas);
     obstacleManager.draw(canvas);
+    
+    if(gameOver){
+      Paint paint = new Paint();
+      paint.setTextSize(100);
+      paint.setColor(Color.MAGENTA);
+      drawCenterText(canvas, paint, "Game Over");
+    }
   }
+             
+  private void drawCenterText(Canvas canvas, Paint paint, String text) {
+    paint.setTextAlign(Paint.Align.LEFT);
+    canvas.getClipBounds(r);
+    int cHeight = r.height();
+    int cWidth = r.width();
+    paint.getTextBounds(text, 0, text.length(), r);
+    float x = cWidth / 2f - r.width() / 2f - r.left;
+    float y = cHeight / 2f + r.height() / 2f - r.bottom;
+    canvas.drawText(text, x, y, paint);
+  }           
 }
