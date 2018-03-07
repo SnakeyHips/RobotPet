@@ -15,6 +15,8 @@ public class ObstacleManager {
     private long startTime;
     private long initTime;
     
+    private int score = 0;
+    
     public ObstacleManager(int robotGap, int obstacleGap, int obstacleHeight, int color){
       this.robotGap = robotGap;
       this.obstacleGap = obstacleGap;
@@ -58,6 +60,7 @@ public class ObstacleManager {
             obstacles.add(0, new Obstacle(color, startX,
             obstacles.get(0).getRect().top - obstacleHeight - obstacleGap, obstacleHeight, robotGap));
             obstacles.remove(obstacles.size() - 1);
+            score++;
         }
     }
     
@@ -65,5 +68,9 @@ public class ObstacleManager {
         for(Obstacle ob : obstacles){
             ob.draw(canvas);
         }
+        Paint paint = new Paint();
+        paint.setTextSize(100);
+        paint.setColor(Color.GREEN);
+        canvas.drawText(score.ToString(), 50, 50 + paint.descent() - paint.descent(), paint);
     }
 }
