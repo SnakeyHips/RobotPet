@@ -26,6 +26,15 @@ public class ObstacleManager {
       populateObstacles();
     }
     
+    public boolean playerCollide(RobotSprite robot) {
+        for(Obstacle ob : obstacles){
+            if(ob.playerCollide(robot)){
+                return true;
+            }
+        }
+        return false; 
+    }
+    
     private void populateObstacles(){
       int currY = -5*Constants.SCREEN_HEIGHT/4;
       while(currY < 0){
