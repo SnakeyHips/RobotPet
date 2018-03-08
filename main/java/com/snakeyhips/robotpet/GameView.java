@@ -25,21 +25,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
       getHolder().addCallback(this);
       thread = new MainThread(getHolder(), this);
       robotSprite = new RobotSprite(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
-      robotPoint = new Point(Constans.SCREEN_WIDTH/2, 3*Constants.SCREEN_HEIGHT/4);
+      robotPoint = new Point(Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/2);
       robotSprite.update(robotPoint);
     
       setFocusable(true);
   }
   
-  public void reset(){
-      robotPoint = new Point(Constants.SCREEN_WIDTH/2, 3*Constants.SCREEN_HEIGHT/4);
-      robotSprite.update(robotPoint);
-      movingPlayer = false;
-  }
-  
   @Override
   public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
   }
 
   @Override
@@ -80,7 +73,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   @Override
   public void draw(Canvas canvas) {
-    if(canvas != null{
+    if(canvas != null){
         super.draw(canvas);
         canvas.drawColor(Color.WHITE);
         robotSprite.draw(canvas);
