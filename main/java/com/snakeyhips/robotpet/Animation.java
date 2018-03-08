@@ -4,10 +4,55 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 
- 
 public class Animation {
 
-    Bitmap bitmapSheet;
+    private Bitmap[] = frames;
+    private int frameIndex;
+    private float frameTime;
+    private long lastFrame;
+    private boolean isPlaying = false;
+    
+    public boolen getIsPlaying(){
+      return isPlaying;
+    }
+ 
+    public void play(){
+      isPlaying = true;
+      frameIndex = 0;
+      lastFrame = System.currentTimeMillis();
+    }
+ 
+    public void stop(){
+      isPlaying = false;
+    }
+ 
+    public Animation(Bitmap[] frames, float animTime){
+      this.frames = frames;
+      frameIndex = 0;
+      frameTime = animTime/frames.length;
+      lastFrame = System.currentTimeMillis();
+    }
+ 
+    public void draw(Canvas canvas, Rect desintationRect){
+      if(!isPlaying){
+        return;
+      }
+      canvas.drawBitmap(frames[frameIndex], null, destinationRect, new Paint());
+    }
+ 
+    public void update(){
+      if(!isPlaying){
+        return;
+      }
+      if(System.currentTimeMillis() - lastFrame > frameTime*1000){
+        frameIndex++;
+        frameIndex = frameIndex >= frames.length ? 0 : frameIndex;
+        lastFrame = System.currentTimeMillis();
+      }
+    }
+ 
+
+    /*Bitmap bitmapSheet;
     String bitmapName;
     private Rect sourceRect;
     private int frameCount;
@@ -47,5 +92,5 @@ public class Animation {
         this.sourceRect.right = this.sourceRect.left + frameWidth;
 
         return sourceRect;
-    }
+    }*/
 }
