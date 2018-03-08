@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 
-public class RobotSprite implements GameObject{
+public class RobotSprite{
     //private Bitmap sprite;
     private Rect rect;
     private int color;
@@ -25,10 +25,6 @@ public class RobotSprite implements GameObject{
         Paint paint = new Paint();
         paint.setColor(color);
         canvas.drawRect(rect, paint);
-    }
-    
-    public void update(){
-        //put stuff in here
     }
     
     public void update(Point point){
