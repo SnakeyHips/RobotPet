@@ -11,6 +11,10 @@ public class RobotSprite{
     private Rect rect;
     private int color;
     
+    private Animation idle;
+    private Animation walkRight;
+    private Animation walkLeft;
+    
     public RobotSprite(Rect rect, int color) {
         this.rect = rect;
         this.color = color;
