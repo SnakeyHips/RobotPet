@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.util.DisplayMetrics;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,11 +36,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         
         //Get screen dimensions
-        Constants.SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
-        Constants.SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
+        DisplayMetrics dM = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dM);
+        Constants.SCREEN_HEIGHT = displayMetrics.heightPixels;
+        Constants.SCREEN_WIDTH = displayMetrics.widthPixels;
         
         //Set up UI objects
-        getSupportActionBar().setTitle("Title Test");
+        getSupportActionBar().setTitle("Robottt");
         speechText = findViewById(R.id.speechText);
         gameButton = findViewById(R.id.gameButton);
         foodButton = findViewById(R.id.foodButton);
