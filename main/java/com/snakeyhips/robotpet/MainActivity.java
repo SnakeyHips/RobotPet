@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton foodButton;
     
     //Robot object
-    private Robot robot;
+    //private Robot robot;
     private long currentTime;
     
     @Override
