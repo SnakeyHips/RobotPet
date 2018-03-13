@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
     
     //UI object references
     private Toolbar toolbar;
-    private TextView speechText;
+    private TextView nameText;
+    private TextView happyText;
+    private TextView hungerText;
     private FloatingActionButton gameButton;
     private FloatingActionButton foodButton;
     
@@ -43,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
         
         //Set up UI objects
         getSupportActionBar().setTitle("Robottt");
-        speechText = findViewById(R.id.speechText);
+        nameText = findViewById(R.id.nameText);
+        happyText = findViewById(R.id.happyText);
+        hungerText = findViewById(R.id.hungerText);
         gameButton = findViewById(R.id.gameButton);
         foodButton = findViewById(R.id.foodButton);
         
