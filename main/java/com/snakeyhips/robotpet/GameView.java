@@ -14,7 +14,7 @@ import android.view.SurfaceView;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   private MainThread thread;
-  private RobotSprite robotSprite;
+  private Robot robot;
   private Point robotPoint;
   private boolean movingPlayer = false;
   private boolean gameOver = false;
@@ -23,10 +23,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
       super(context, attrs);
       getHolder().addCallback(this);
       thread = new MainThread(getHolder(), this);
-      robotSprite = new RobotSprite(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
+      robot = new Robot(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
       robotPoint = new Point(Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/2);
-      robotSprite.update(robotPoint);
-    
+      robot.update(robotPoint);
       setFocusable(true);
   }
   
@@ -67,7 +66,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   }
   
   public void update() {
-      robotSprite.update(robotPoint);
+      robot.update(robotPoint);
   }
   
   @Override
@@ -75,7 +74,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
     if(canvas != null){
         super.draw(canvas);
         canvas.drawColor(Color.WHITE);
-        robotSprite.draw(canvas);
+        robot.draw(canvas);
     }
   }       
 }
