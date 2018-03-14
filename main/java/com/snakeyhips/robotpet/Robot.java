@@ -1,6 +1,9 @@
 package com.snakeyhips.robotpet;
 
-public class Robot {
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+public class Robot extends BaseObservable {
     private String name;
     private int age;
     private int happy;
@@ -12,6 +15,7 @@ public class Robot {
     
     public void setName(String name){
         this.name = name;
+        notifyPropertyChanged(name);  
     }
     public String getName(){
         return name;
@@ -19,6 +23,7 @@ public class Robot {
     
     public void setAge(int age){
         this.age = age;
+        notifyPropertyChanged(age);
     }
     public String getAge(){
         return String.valueOf(age);
@@ -26,6 +31,7 @@ public class Robot {
     
     public void setHappy(int happy){
         this.happy = happy;
+        notifyPropertyChanged(happy);
     }
     public String getHappy(){
         return String.valueOf(happy);
@@ -33,6 +39,7 @@ public class Robot {
     
     public void setHunger(int hunger){
         this.hunger = hunger;
+        notifyPropertyChanged(hunger);
     }
     public String getHunger(){
         return String.valueOf(hunger);
@@ -40,6 +47,7 @@ public class Robot {
 
     public void setFatigue(int fatigue){
         this.fatigue = fatigue;
+        notifyPropertyChanged(fatigue);
     }
     public String getFatigue(){
         return String.valueOf(fatigue);
@@ -47,6 +55,7 @@ public class Robot {
     
     public void setNaughty(int naughty){
         this.naughty = naughty;
+        notifyPropertyChanged(naughty);
     }
     public String getNaughty(){
         return String.valueOf(naughty);
@@ -54,6 +63,7 @@ public class Robot {
     
     public void setWaste(int waste){
         this.waste = waste;
+        notifyPropertyChanged(waste);
     }
     public String getWaste(){
         return String.valueOf(waste);
@@ -61,6 +71,7 @@ public class Robot {
     
     public void setIllness(boolean illness){
         this.illness = illness;
+        notifyPropertyChanged(illness);
     }
     public String getIllness(){
         return illness;
