@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             speechText.setText("New");
         } finally {
             getSupportActionBar().setTitle(robot.getName());
-            binding.setUser(robot);
+            binding.setRobot(robot);
         }
     }
     
