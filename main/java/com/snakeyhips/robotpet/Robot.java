@@ -1,9 +1,6 @@
 package com.snakeyhips.robotpet;
 
-import java.util.UUID;
-
 public class Robot {
-    private UUID id;
     private String name;
     private int age;
     private int happy;
@@ -12,13 +9,6 @@ public class Robot {
     private int naughty;
     private int waste;
     private boolean illness;
-    
-    public void setId(UUID id){
-        this.id = id;
-    }
-    public UUID getId(){
-        return id;
-    }
     
     public void setName(String name){
         this.name = name;
@@ -30,49 +20,49 @@ public class Robot {
     public void setAge(int age){
         this.age = age;
     }
-    public int getAge(){
-        return age;
+    public String getAge(){
+        return String.valueOf(age);
     }
     
     public void setHappy(int happy){
         this.happy = happy;
     }
-    public int getHappy(){
-        return happy;
+    public String getHappy(){
+        return String.valueOf(happy);
     }
     
     public void setHunger(int hunger){
         this.hunger = hunger;
     }
-    public int getHunger(){
-        return hunger;
+    public String getHunger(){
+        return String.valueOf(hunger);
     }
 
     public void setFatigue(int fatigue){
         this.fatigue = fatigue;
     }
-    public int getFatigue(){
-        return fatigue;
+    public String getFatigue(){
+        return String.valueOf(fatigue);
     }
     
     public void setNaughty(int naughty){
         this.naughty = naughty;
     }
-    public int getNaughty(){
-        return naughty;
+    public String getNaughty(){
+        return String.valueOf(naughty);
     }
     
     public void setWaste(int waste){
         this.waste = waste;
     }
-    public int getWaste(){
-        return waste;
+    public String getWaste(){
+        return String.valueOf(waste);
     }
     
     public void setIllness(boolean illness){
         this.illness = illness;
     }
-    public boolean getIllness(){
+    public String getIllness(){
         return illness;
     }
 }
