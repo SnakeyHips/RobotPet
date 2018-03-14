@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
     
     //UI object references
     private Toolbar toolbar;
-    private TextView happyText;
-    private TextView hungerText;
     private FloatingActionButton gameButton;
     private FloatingActionButton foodButton;
     
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        MainActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         
         //Get screen dimensions
@@ -42,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
         
         //Set up UI objects
         getSupportActionBar().setTitle("Robot Pet");
-        happyText = findViewById(R.id.happyText);
-        hungerText = findViewById(R.id.hungerText);
         gameButton = findViewById(R.id.gameButton);
         foodButton = findViewById(R.id.foodButton);
         
@@ -100,10 +96,8 @@ public class MainActivity extends AppCompatActivity {
             speechText.setText("New");
         } finally {
             getSupportActionBar().setTitle(robot.getName());
-            happyText.setText(Integer.ToString(robot.getHappy()));
-            hungerText.setText(Integer.ToString(robot.getHunger()));
+            binding.setUser(robot);
         }
-        
     }
     
     //Saves state of Robot when activity is paused
