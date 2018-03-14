@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     
     //UI object references
     private Toolbar toolbar;
-    private TextView speechText;
+    private TextView happyText;
+    private TextView hungerText;
     private FloatingActionButton gameButton;
     private FloatingActionButton foodButton;
     
@@ -40,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
         Constants.SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
         
         //Set up UI objects
-        getSupportActionBar().setTitle("Title Test");
-        speechText = findViewById(R.id.speechText);
+        getSupportActionBar().setTitle("Robot Pet");
+        happyText = findViewById(R.id.happyText);
+        hungerText = findViewById(R.id.hungerText);
         gameButton = findViewById(R.id.gameButton);
         foodButton = findViewById(R.id.foodButton);
         
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        speechText.setText("Game Pressed");
+                        robot.setHappy(robot.getHappy() + 25);
                         Toast toast = Toast.makeText(getApplicationContext(), "Game Pressed", Toast.LENGTH_SHORT);
                         toast.show();
                     }
@@ -62,19 +64,19 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        speechText.setText("Food Pressed");
+                        robot.setHappy(robot.getHappy() + 25);
                         Toast toast = Toast.makeText(getApplicationContext(), "Food Pressed", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 }
         );
         
-        /*Retrieve previous data from SharedPreferences
+        Retrieve previous data from SharedPreferences
         try{
             SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
             
             //robot.setId(UUID.fromString(sharedPref.getString("robotId"), ""));
-            robot.setName(sharedPref.getString("robotName", ""));
+            robot.setName(sharedPref.getString("robotName", "2B Saved"));
             robot.setAge(sharedPref.getInt("robotAge", 0));
             robot.setHappy(sharedPref.getInt("robotHappy", 0));
             robot.setHunger(sharedPref.getInt("robotHunger", 0));
@@ -82,13 +84,12 @@ public class MainActivity extends AppCompatActivity {
             robot.setNaughty(sharedPref.getInt("robotNaughty", 0));
             robot.setWaste(sharedPref.getInt("robotWaste", 0));
             robot.setIllness(sharedPref.getBoolean("robotIllness", false));
-            speechText.setText("Saved");
         } catch (Exception e){
             e.printStackTrace();
             //Initialise mRobot possibly not needed if above works
             robot = new Robot();
             //robot.setId(new UUID());
-            robot.setName("Robot Name");
+            robot.setName("2B New");
             robot.setAge(0);
             robot.setHappy(50);
             robot.setHunger(50);
@@ -97,11 +98,15 @@ public class MainActivity extends AppCompatActivity {
             robot.setWaste(0);
             robot.setIllness(false);
             speechText.setText("New");
-        }*/
+        } finally {
+            getSupportActionBar().setTitle(robot.getName());
+            happyText.setText(Integer.ToString(robot.getHappy()));
+            hungerText.setText(Integer.ToString(robot.getHunger()));
+        }
         
     }
     
-    /*Saves state of Robot when activity is paused
+    //Saves state of Robot when activity is paused
     @Override
     public void onPause(){
         super.onPause();
@@ -121,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             editor.putBoolean("robotIllness", robot.getIllness());
             editor.apply();
         }
-    }*/
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
