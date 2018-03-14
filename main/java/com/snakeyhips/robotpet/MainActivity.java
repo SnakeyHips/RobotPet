@@ -14,21 +14,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.util.DisplayMetrics;
+
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
     
     //UI object references
     private Toolbar toolbar;
-    private TextView nameText;
-    private TextView happyText;
-    private TextView hungerText;
+    private TextView speechText;
     private FloatingActionButton gameButton;
     private FloatingActionButton foodButton;
     
     //Robot object
-    //private Robot robot;
+    private Robot robot;
     private long currentTime;
     
     @Override
@@ -38,16 +36,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         
         //Get screen dimensions
-        DisplayMetrics dM = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dM);
-        Constants.SCREEN_HEIGHT = displayMetrics.heightPixels;
-        Constants.SCREEN_WIDTH = displayMetrics.widthPixels;
+        Constants.SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
+        Constants.SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
         
         //Set up UI objects
-        getSupportActionBar().setTitle("Robottt");
-        nameText = findViewById(R.id.nameText);
-        happyText = findViewById(R.id.happyText);
-        hungerText = findViewById(R.id.hungerText);
+        getSupportActionBar().setTitle("Title Test");
+        speechText = findViewById(R.id.speechText);
         gameButton = findViewById(R.id.gameButton);
         foodButton = findViewById(R.id.foodButton);
         

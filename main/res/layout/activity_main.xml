@@ -22,34 +22,15 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"/>
     
     <TextView
-        android:id="@+id/nameText"
+        android:id="@+id/speechText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|start"
         android:padding="8dp"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@id/toolbar"/>
-    
-    <TextView
-        android:id="@+id/happyText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/nameText"/>
-    
-    <TextView
-        android:id="@+id/hungerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/happyText"/>
     
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/gameButton"
@@ -57,7 +38,6 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:layout_margin="16dp"
-        android:elevation="0dp"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -69,7 +49,6 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:layout_margin="16dp"
-        android:elevation="0dp"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"

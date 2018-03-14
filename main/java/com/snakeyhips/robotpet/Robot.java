@@ -1,17 +1,8 @@
 package com.snakeyhips.robotpet;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
 import java.util.UUID;
 
 public class Robot {
-    
-    //private Bitmap sprite;
-    private Rect rect;
-    private int color;
     private UUID id;
     private String name;
     private int age;
@@ -21,11 +12,6 @@ public class Robot {
     private int naughty;
     private int waste;
     private boolean illness;
-    
-    public Robot(Rect rect, int color) {
-        this.rect = rect;
-        this.color = color;
-    }
     
     public void setId(UUID id){
         this.id = id;
@@ -88,22 +74,5 @@ public class Robot {
     }
     public boolean getIllness(){
         return illness;
-    }
-    
-    public Rect getRect(){
-        return rect;
-    }
-    
-    public void draw(Canvas canvas){
-        //canvas.drawBitmap(sprite, 100, 100, null);
-        Paint paint = new Paint();
-        paint.setColor(color);
-        canvas.drawRect(rect, paint);
-    }
-    
-    public void update(Point point){
-        //l, t, r, b
-        rect.set(point.x - rect.width()/2, point.y - rect.height()/2,
-                 point.x + rect.width()/2, point.y + rect.height()/2);
     }
 }
