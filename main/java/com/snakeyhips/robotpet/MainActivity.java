@@ -1,8 +1,8 @@
 package com.snakeyhips.robotpet;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.SharedPreferences;
@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.snakeyhips.robotpet.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         
         //Get screen dimensions
@@ -47,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        robot.setHappy(robot.getHappy() + 25);
+                        robot.setHappy(Integer.parseInt(robot.getHappy()) + 25);
+                        notifyAll();
                         Toast toast = Toast.makeText(getApplicationContext(), "Game Pressed", Toast.LENGTH_SHORT);
                         toast.show();
                     }
@@ -58,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        robot.setHappy(robot.getHappy() + 25);
+                        robot.setHappy(Integer.parseInt(robot.getHappy()) + 25);
                         Toast toast = Toast.makeText(getApplicationContext(), "Food Pressed", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 }
         );
         
-        Retrieve previous data from SharedPreferences
+        //Retrieve previous data from SharedPreferences
         try{
             SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
             
@@ -91,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
             robot.setNaughty(0);
             robot.setWaste(0);
             robot.setIllness(false);
-            speechText.setText("New");
         } finally {
             getSupportActionBar().setTitle(robot.getName());
             binding.setRobot(robot);
@@ -109,12 +110,12 @@ public class MainActivity extends AppCompatActivity {
             
             //editor.putString("robotId", new UUID(robot.getId()));
             editor.putString("robotName", robot.getName());
-            editor.putInt("robotAge", robot.getAge());
-            editor.putInt("robotHappy", robot.getHappy());
-            editor.putInt("robotHunger", robot.getHunger());
-            editor.putInt("robotFatigue", robot.getFatigue());
-            editor.putInt("robotNaughty", robot.getNaughty());
-            editor.putInt("robotWaste", robot.getWaste());
+            editor.putInt("robotAge", Integer.parseInt(robot.getAge()));
+            editor.putInt("robotHappy", Integer.parseInt(robot.getHappy()));
+            editor.putInt("robotHunger", Integer.parseInt(robot.getHunger()));
+            editor.putInt("robotFatigue", Integer.parseInt(robot.getFatigue()));
+            editor.putInt("robotNaughty", Integer.parseInt(robot.getNaughty()));
+            editor.putInt("robotWaste", Integer.parseInt(robot.getWaste()));
             editor.putBoolean("robotIllness", robot.getIllness());
             editor.apply();
         }

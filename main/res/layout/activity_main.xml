@@ -1,72 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.snakeyhips.robotpet.MainActivity">
-    
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-       <variable name="robot" type="com.snakeyhips.robotpet.Robot"/>
+        <variable name="robot" type="com.snakeyhips.robotpet.Robot"/>
     </data>
+    <android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.snakeyhips.robotpet.MainActivity">
 
-    <android.support.v7.widget.Toolbar
-       android:id="@+id/toolbar"
-       android:layout_width="match_parent"
-       android:layout_height="?attr/actionBarSize"
-       android:background="?attr/colorPrimary"
-       android:elevation="4dp"
-       android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-       app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <com.snakeyhips.robotpet.GameView
-        android:id="@+id/gameView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
-    
-    <TextView
-        android:id="@+id/happyText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|start"
-        android:padding="8dp"
-        android:text="@{robot.happy}"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
-    
-    <TextView
-        android:id="@+id/hungerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|start"
-        android:padding="8dp"
-        android:text="@{robot.hunger}"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
-    
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/gameButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:layout_margin="16dp"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:focusable="true" />
-    
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/foodButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:layout_margin="16dp"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:focusable="true" />
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.Toolbar
+           android:id="@+id/toolbar"
+           android:layout_width="match_parent"
+           android:layout_height="?attr/actionBarSize"
+           android:background="?attr/colorPrimary"
+           android:elevation="4dp"
+           android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+           app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+        <com.snakeyhips.robotpet.GameView
+            android:id="@+id/gameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+        <TextView
+            android:id="@+id/happyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@{robot.happy}"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+        <TextView
+            android:id="@+id/hungerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@{robot.hunger}"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/happyText"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/gameButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_margin="16dp"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:focusable="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/foodButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_margin="16dp"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:focusable="true" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

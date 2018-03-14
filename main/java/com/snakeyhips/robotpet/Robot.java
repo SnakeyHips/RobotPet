@@ -12,35 +12,37 @@ public class Robot extends BaseObservable {
     private int naughty;
     private int waste;
     private boolean illness;
-    
+
     public void setName(String name){
         this.name = name;
-        notifyPropertyChanged(name);  
     }
     public String getName(){
         return name;
     }
-    
+
     public void setAge(int age){
         this.age = age;
         notifyPropertyChanged(age);
     }
+    @Bindable
     public String getAge(){
         return String.valueOf(age);
     }
-    
+
     public void setHappy(int happy){
         this.happy = happy;
         notifyPropertyChanged(happy);
     }
+    @Bindable
     public String getHappy(){
         return String.valueOf(happy);
     }
-    
+
     public void setHunger(int hunger){
         this.hunger = hunger;
         notifyPropertyChanged(hunger);
     }
+    @Bindable
     public String getHunger(){
         return String.valueOf(hunger);
     }
@@ -49,31 +51,33 @@ public class Robot extends BaseObservable {
         this.fatigue = fatigue;
         notifyPropertyChanged(fatigue);
     }
+    @Bindable
     public String getFatigue(){
         return String.valueOf(fatigue);
     }
-    
+
     public void setNaughty(int naughty){
         this.naughty = naughty;
         notifyPropertyChanged(naughty);
     }
+    @Bindable
     public String getNaughty(){
         return String.valueOf(naughty);
     }
-    
+
     public void setWaste(int waste){
         this.waste = waste;
         notifyPropertyChanged(waste);
     }
+    @Bindable
     public String getWaste(){
         return String.valueOf(waste);
     }
-    
+
     public void setIllness(boolean illness){
         this.illness = illness;
-        notifyPropertyChanged(illness);
     }
-    public String getIllness(){
+    public boolean getIllness(){
         return illness;
     }
 }
