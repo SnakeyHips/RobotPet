@@ -75,4 +75,8 @@ public class Robot {
     public boolean getIllness(){
         return illness;
     }
+    
+    public void setVariableChangeListener(VariableChangeListener variableChangeListener) {
+        this.variableChangeListener = variableChangeListener;
+    }
 }
