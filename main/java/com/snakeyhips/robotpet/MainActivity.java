@@ -15,8 +15,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.UUID;
-
 public class MainActivity extends AppCompatActivity {
     
     //UI object references
