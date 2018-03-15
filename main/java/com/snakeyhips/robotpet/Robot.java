@@ -22,56 +22,56 @@ public class Robot extends BaseObservable {
 
     public void setAge(int age){
         this.age = age;
-        notifyPropertyChanged(age);
+        notifyPropertyChanged(BR.age);
     }
     @Bindable
-    public String getAge(){
-        return String.valueOf(age);
+    public int getAge(){
+        return age;
     }
 
     public void setHappy(int happy){
         this.happy = happy;
-        notifyPropertyChanged(happy);
+        notifyPropertyChanged(BR.happy);
     }
     @Bindable
-    public String getHappy(){
-        return String.valueOf(happy);
+    public int getHappy(){
+        return happy;
     }
 
     public void setHunger(int hunger){
         this.hunger = hunger;
-        notifyPropertyChanged(hunger);
+        notifyPropertyChanged(BR.hunger);
     }
     @Bindable
-    public String getHunger(){
-        return String.valueOf(hunger);
+    public int getHunger(){
+        return hunger;
     }
 
     public void setFatigue(int fatigue){
         this.fatigue = fatigue;
-        notifyPropertyChanged(fatigue);
+        notifyPropertyChanged(BR.fatigue);
     }
     @Bindable
-    public String getFatigue(){
-        return String.valueOf(fatigue);
+    public int getFatigue(){
+        return fatigue;
     }
 
     public void setNaughty(int naughty){
         this.naughty = naughty;
-        notifyPropertyChanged(naughty);
+        notifyPropertyChanged(BR.naughty);
     }
     @Bindable
-    public String getNaughty(){
-        return String.valueOf(naughty);
+    public int getNaughty(){
+        return naughty;
     }
 
     public void setWaste(int waste){
         this.waste = waste;
-        notifyPropertyChanged(waste);
+        notifyPropertyChanged(BR.waste);
     }
     @Bindable
-    public String getWaste(){
-        return String.valueOf(waste);
+    public int getWaste(){
+        return waste;
     }
 
     public void setIllness(boolean illness){
