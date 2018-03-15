@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        robot.setHappy(Integer.parseInt(robot.getHappy()) + 25);
+                        robot.setHappy(robot.getHappy() + 25);
                         notifyAll();
                         Toast toast = Toast.makeText(getApplicationContext(), "Game Pressed", Toast.LENGTH_SHORT);
                         toast.show();
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        robot.setHappy(Integer.parseInt(robot.getHappy()) + 25);
+                        robot.setHappy(robot.getHappy() + 25);
                         Toast toast = Toast.makeText(getApplicationContext(), "Food Pressed", Toast.LENGTH_SHORT);
                         toast.show();
                     }
