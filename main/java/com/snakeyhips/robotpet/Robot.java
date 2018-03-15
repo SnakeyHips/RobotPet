@@ -16,6 +16,7 @@ public class Robot extends BaseObservable {
     public void setName(String name){
         this.name = name;
     }
+    @Bindable
     public String getName(){
         return name;
     }
