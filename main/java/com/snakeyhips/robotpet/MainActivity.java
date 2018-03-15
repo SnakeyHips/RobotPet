@@ -70,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
         //Retrieve previous data from SharedPreferences
         try{
             SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
-            
-            //robot.setId(UUID.fromString(sharedPref.getString("robotId"), ""));
             robot.setName(sharedPref.getString("robotName", "2B Saved"));
             robot.setAge(sharedPref.getInt("robotAge", 0));
             robot.setHappy(sharedPref.getInt("robotHappy", 0));
@@ -84,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             //Initialise mRobot possibly not needed if above works
             robot = new Robot();
-            //robot.setId(new UUID());
             robot.setName("2B New");
             robot.setAge(0);
             robot.setHappy(50);
@@ -107,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
         if(robot != null){
             SharedPreferences mainPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = mainPref.edit();
-            
-            //editor.putString("robotId", new UUID(robot.getId()));
             editor.putString("robotName", robot.getName());
             editor.putInt("robotAge", Integer.parseInt(robot.getAge()));
             editor.putInt("robotHappy", Integer.parseInt(robot.getHappy()));
