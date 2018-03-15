@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         robot.setHappy(robot.getHappy() + 25);
-                        notifyAll();
                         Toast toast = Toast.makeText(getApplicationContext(), "Game Pressed", Toast.LENGTH_SHORT);
                         toast.show();
                     }
