@@ -105,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences mainPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = mainPref.edit();
             editor.putString("robotName", robot.getName());
-            editor.putInt("robotAge", Integer.parseInt(robot.getAge()));
-            editor.putInt("robotHappy", Integer.parseInt(robot.getHappy()));
-            editor.putInt("robotHunger", Integer.parseInt(robot.getHunger()));
-            editor.putInt("robotFatigue", Integer.parseInt(robot.getFatigue()));
-            editor.putInt("robotNaughty", Integer.parseInt(robot.getNaughty()));
-            editor.putInt("robotWaste", Integer.parseInt(robot.getWaste()));
+            editor.putInt("robotAge", robot.getAge());
+            editor.putInt("robotHappy", robot.getHappy());
+            editor.putInt("robotHunger", robot.getHunger());
+            editor.putInt("robotFatigue", robot.getFatigue());
+            editor.putInt("robotNaughty", robot.getNaughty());
+            editor.putInt("robotWaste", robot.getWaste());
             editor.putBoolean("robotIllness", robot.getIllness());
             editor.apply();
         }
