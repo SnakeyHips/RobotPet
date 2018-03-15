@@ -1,7 +1,5 @@
 package com.snakeyhips.robotpet;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.snakeyhips.robotpet.databinding.ActivityMainBinding;
 
@@ -24,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton foodButton;
     
     //Robot object
-    private Robot robot;
+    public static Robot robot;
     private long currentTime;
     
     @Override
@@ -32,10 +29,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-        
-        //Get screen dimensions
-        Constants.SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
-        Constants.SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
         
         //Set up UI objects
         //getSupportActionBar().setTitle("Robot Pet");
@@ -59,16 +52,26 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        robot.setHappy(robot.getHappy() + 25);
+                        robot.setHunger(robot.getHunger() + 25);
                         Toast toast = Toast.makeText(getApplicationContext(), "Food Pressed", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 }
         );
-        
-        //Retrieve previous data from SharedPreferences
+        robot = new Robot();
+        robot.setName("Robot Test");
+        robot.setAge(0);
+        robot.setHappy(50);
+        robot.setHunger(50);
+        robot.setFatigue(0);
+        robot.setNaughty(0);
+        robot.setWaste(0);
+        robot.setIllness(false);
+        binding.setRobot(robot);
+        /*Retrieve previous data from SharedPreferences
         try{
             SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+            robot = new Robot();
             robot.setName(sharedPref.getString("robotName", "2B Saved"));
             robot.setAge(sharedPref.getInt("robotAge", 0));
             robot.setHappy(sharedPref.getInt("robotHappy", 0));
@@ -91,14 +94,14 @@ public class MainActivity extends AppCompatActivity {
             robot.setIllness(false);
         } finally {
             binding.setRobot(robot);
-        }
+        }*/
     }
     
     //Saves state of Robot when activity is paused
     @Override
     public void onPause(){
         super.onPause();
-        
+        /*
         if(robot != null){
             SharedPreferences mainPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = mainPref.edit();
@@ -111,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             editor.putInt("robotWaste", robot.getWaste());
             editor.putBoolean("robotIllness", robot.getIllness());
             editor.apply();
-        }
+        }*/
     }
 
     @Override

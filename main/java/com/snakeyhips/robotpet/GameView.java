@@ -1,6 +1,7 @@
 package com.snakeyhips.robotpet;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -16,15 +17,15 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   private MainThread thread;
   private RobotSprite robotSprite;
   private Point robotPoint;
-  private boolean movingPlayer = false;
-  private boolean gameOver = false;
+  private int width = Resources.getSystem().getDisplayMetrics().widthPixels;
+  private int height = Resources.getSystem().getDisplayMetrics().heightPixels;
 
   public GameView(Context context, AttributeSet attrs) {
       super(context, attrs);
       getHolder().addCallback(this);
       thread = new MainThread(getHolder(), this);
       robotSprite = new RobotSprite(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
-      robotPoint = new Point(Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/2);
+      robotPoint = new Point(width/2, height/2);
       robotSprite.update(robotPoint);
     
       setFocusable(true);
