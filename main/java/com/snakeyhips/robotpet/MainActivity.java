@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Constants.SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
         
         //Set up UI objects
-        getSupportActionBar().setTitle("Robot Pet");
+        //getSupportActionBar().setTitle("Robot Pet");
         gameButton = findViewById(R.id.gameButton);
         foodButton = findViewById(R.id.foodButton);
         
@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
             robot.setWaste(0);
             robot.setIllness(false);
         } finally {
-            getSupportActionBar().setTitle(robot.getName());
             binding.setRobot(robot);
         }
     }
