@@ -15,7 +15,7 @@ public class RobotSprite{
     private int maxX;
     private int minX;
     
-    public RobotSprite(Bitmap sprite, int x, int y) {
+    public RobotSprite(Bitmap sprite, int x, int y, maxX, minX) {
         this.sprite = sprite;
         this.x = x;
         this.y = y;
@@ -24,19 +24,23 @@ public class RobotSprite{
     public Bitmap getBitmap() {
         return bitmap;
     }
+    
+    public void setBitmap(Bitmap sprite) {
+        this.sprite = sprite;
+    }
  
     public int getX() {
         return x;
     }
- 
+    
+    public void setX(int x) {
+        this.x = x;
+    }
+    
     public int getY() {
         return y;
     }
-    
-    public Rect getRect(){
-        return rect;
-    }
-    
+      
     public void draw(Canvas canvas){
         //canvas.drawBitmap(sprite, 100, 100, null);
         Paint paint = new Paint();
