@@ -1,7 +1,6 @@
 package com.snakeyhips.robotpet;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -16,8 +15,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   private MainThread thread;
   private RobotSprite robotSprite;
-  private int width = Resources.getSystem().getDisplayMetrics().widthPixels;
-  private int height = Resources.getSystem().getDisplayMetrics().heightPixels;
 
   public GameView(Context context, AttributeSet attrs) {
       super(context, attrs);
