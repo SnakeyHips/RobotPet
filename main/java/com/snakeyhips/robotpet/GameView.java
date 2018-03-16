@@ -22,10 +22,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   public GameView(Context context, AttributeSet attrs) {
       super(context, attrs);
       getHolder().addCallback(this);
-      thread = new MainThread(getHolder(), this);
-      robotSprite = new RobotSprite(
-        BitmapFactory.decodeResource(this.getResources(), R.drawable.robot), 100, 50);
-    
       setFocusable(true);
   }
   
@@ -35,6 +31,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
+    thread = new MainThread(getHolder(), this);
+    robotSprite = new RobotSprite(BitmapFactory.decodeResource(this.getResources(), R.drawable.robot), 100, 50);
     thread.setRunning(true);
     thread.start();
   }
