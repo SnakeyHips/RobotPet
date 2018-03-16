@@ -29,8 +29,8 @@
         <ProgressBar
             android:id="@+id/happyBar"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
             android:padding="8dp"
             android:progress="@{robot.happy}"
             android:max="100"
@@ -39,8 +39,8 @@
         <ProgressBar
             android:id="@+id/hungerBar"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
             android:padding="8dp"
             android:progress="@{robot.hunger}"
             android:max="100"
