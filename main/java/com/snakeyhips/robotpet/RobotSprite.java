@@ -7,13 +7,30 @@ import android.graphics.Point;
 import android.graphics.Rect;
 
 public class RobotSprite{
-    //private Bitmap sprite;
-    private Rect rect;
-    private int color;
+    private Bitmap sprite;
+    private int x;
+    private int y;
     
-    public RobotSprite(Rect rect, int color) {
-        this.rect = rect;
-        this.color = color;
+    //Controlling X coordinate so that robot won't go outside the screen
+    private int maxX;
+    private int minX;
+    
+    public RobotSprite(Bitmap sprite, int x, int y) {
+        this.sprite = sprite;
+        this.x = x;
+        this.y = y;
+    }
+    
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+ 
+    public int getX() {
+        return x;
+    }
+ 
+    public int getY() {
+        return y;
     }
     
     public Rect getRect(){
@@ -28,8 +45,11 @@ public class RobotSprite{
     }
     
     public void update(Point point){
-        //l, t, r, b
-        rect.set(point.x - rect.width()/2, point.y - rect.height()/2,
-                 point.x + rect.width()/2, point.y + rect.height()/2);
+        if (x < minX) {
+            x = minX;
+        }
+        if (x > maxX) {
+            x = maxX;
+        }
     }
 }
