@@ -24,7 +24,8 @@
             android:id="@+id/gameView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+            app:layout_constraintTop_toBottomOf="@id/hungerBar"
+            app:layout_constraintBottom_toTopOf="@id/gameButton"/>
 
         <ProgressBar
             android:id="@+id/happyBar"
@@ -50,23 +51,17 @@
             android:id="@+id/gameButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
             android:layout_margin="16dp"
-            app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:focusable="true" />
+            app:layout_constraintLeft_toLeftOf="parent" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/foodButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
             android:layout_margin="16dp"
-            app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:focusable="true" />
+            app:layout_constraintRight_toRightOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>
