@@ -69,6 +69,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   public void update() {
       robotSprite.update(robotPoint);
+      MainActivity.robot.getHunger() > 0 ? MainActivity.robotsetHunger(MainActivity.robot.getHunger() - 1) : 0;
+      //if(MainActivity.robot.getHunger() != 0){
+      //    MainActivity.robot.setHunger(MainActivity.robot.getHunger() - 1);
+      //}
   }
   
   @Override
