@@ -22,17 +22,17 @@ public abstract class GameObject {
     public GameObject(Bitmap image, int rowCount, int colCount, int x, int y)  {
  
         this.image = image;
-        this.rowCount= rowCount;
-        this.colCount= colCount;
+        this.rowCount = rowCount;
+        this.colCount = colCount;
  
-        this.x= x;
-        this.y= y;
+        this.x = x;
+        this.y = y;
  
         this.WIDTH = image.getWidth();
         this.HEIGHT = image.getHeight();
  
         this.width = this.WIDTH/ colCount;
-        this.height= this.HEIGHT/ rowCount;
+        this.height = this.HEIGHT/ rowCount;
     }
  
  
@@ -43,11 +43,11 @@ public abstract class GameObject {
     }
  
     public int getX()  {
-        return this.x;
+        return x;
     }
  
     public int getY()  {
-        return this.y;
+        return y;
     }
  
  
