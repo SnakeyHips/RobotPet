@@ -23,7 +23,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
       super(context, attrs);
       getHolder().addCallback(this);
       thread = new MainThread(getHolder(), this);
-      robotSprite = new RobotSprite((get bitmap here), width/2, height/2);
+      robotSprite = new RobotSprite((get bitmap here), width/2, height/2, width, 0);
       robotSprite.update();
     
       setFocusable(true);
