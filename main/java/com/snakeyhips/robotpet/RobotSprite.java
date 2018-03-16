@@ -36,7 +36,7 @@ public class RobotSprite extends GameObject {
  
     private GameView gameView;
  
-    public ChibiCharacter(GameView gameView, Bitmap image, int x, int y) {
+    public RobotSprite(GameView gameView, Bitmap image, int x, int y) {
         super(image, 4, 3, x, y);
  
         this.gameView= gameView;
