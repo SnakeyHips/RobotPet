@@ -16,7 +16,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   private MainThread thread;
   private RobotSprite robotSprite;
-  private Point robotPoint;
   private int width = Resources.getSystem().getDisplayMetrics().widthPixels;
   private int height = Resources.getSystem().getDisplayMetrics().heightPixels;
 
@@ -24,9 +23,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
       super(context, attrs);
       getHolder().addCallback(this);
       thread = new MainThread(getHolder(), this);
-      robotSprite = new RobotSprite(new Rect(100, 100, 200, 200), Color.rgb(255, 0, 0));
-      robotPoint = new Point(width/2, height/2);
-      robotSprite.update(robotPoint);
+      robotSprite = new RobotSprite((get bitmap here), width/2, height/2);
+      robotSprite.update();
     
       setFocusable(true);
   }
@@ -61,7 +59,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
       switch(event.getAction()){
         case MotionEvent.ACTION_DOWN:
         case MotionEvent.ACTION_MOVE:
-            robotPoint.set((int)event.getX(), (int)event.getY()); 
+            robotSprite.setX((int)event.getX()); 
             break;
       }
       return true;
