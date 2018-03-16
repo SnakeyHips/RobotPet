@@ -58,8 +58,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   public boolean onTouchEvent(MotionEvent event){
       switch(event.getAction()){
         case MotionEvent.ACTION_DOWN:
-        case MotionEvent.ACTION_MOVE:
-            //robotSprite.setX((int)event.getX()); 
+        case MotionEvent.ACTION_MOVE: 
+            robotSprite.setMovingVector((int)event.getX() - robotSprite.getX(),(int)event.getY() - robotSprite.getY());
+            return true;
             break;
       }
       return true;
