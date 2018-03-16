@@ -62,7 +62,7 @@ public class MainThread extends Thread {
                 frameCount = 0;           
                 totalTime = 0;           
                 System.out.println(averageFPS);
-                //if(MainActivity.robot.getHunger() > 0){ MainActivity.robot.setHunger(MainActivity.robot.getHunger() - 1); }
+                if(MainActivity.robot.getHunger() > 0){ MainActivity.robot.setHunger(MainActivity.robot.getHunger() - 1); }
             }   
         }
     }
