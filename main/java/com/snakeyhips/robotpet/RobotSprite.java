@@ -5,26 +5,25 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
 
 public class RobotSprite  {
 
+    private Rect rect;
+    private int color;
     private Bitmap sprite;
-    private int x;
-    private int y;
 
-    private int maxX;
-    private int minX;
 
     private Animation idle;
     private Animation walkRight;
     private Animation walkLeft;
+    private AnimationManager animManager;
 
-    public RobotSprite(Context context, Bitmap sprite, int x, int y, int maxX, int minX){
-        this.sprite = sprite;
-        this.x = x;
-        this.y = y;
-        this.maxX = maxX;
-        this.minX = minX;
+    public RobotSprite(Context context, Rect rect, int color){
+        this.rect = rect;
+        this.color = color;
 
         Bitmap idleImg = BitmapFactory.decodeResource(context.getResources(), R.drawable.alien);
         Bitmap walk1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.alien_walk1);
@@ -37,34 +36,38 @@ public class RobotSprite  {
         m.preScale(-1, 1);
         walk1 = Bitmap.createBitmap(walk1, 0, 0, walk1.getWidth(), walk1.getHeight(), m, false);
         walk2 = Bitmap.createBitmap(walk2, 0, 0, walk2.getWidth(), walk2.getHeight(), m, false);
+        walkLeft = new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
 
-        walkLeft = new new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
+        animManager = new AnimationManager(new Animation[]{idle, walkRight, walkLeft});
+    }
+
+    public Rect getRect(){
+        return rect;
     }
 
     public void draw(Canvas canvas){
-        canvas.drawBitmap(sprite, 100, 100, null);
-    }
-
-    public int getX(){
-        return x;
-    }
-
-    public void setX(int x){
-        this.x = x;
-    }
-
-    public int getY(){
-        return y;
+        animManager.draw(canvas, rect);
     }
 
     public void update(){
-        if( x < minX){
-            x = minX;
-        }
-        if(x > maxX) {
-            x = maxX;
+        animManager.update();
+    }
+
+    public void update(Point point){
+        float oldLeft = rect.left;
+
+        rect.set(point.x - rect.width()/2, point.y - rect.height()/2,
+                point.x + rect.width()/2, point.y + rect.height()/2);
+
+        int state = 0;
+        if(rect.left - oldLeft > 5){
+            state = 1;
+        } else if(rect.left - oldLeft < -5){
+            state = 2;
         }
 
+        animManager.playAnim(state);
+        animManager.update();
     }
 
     /* vector method

@@ -15,6 +15,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   private MainThread thread;
   private RobotSprite robotSprite;
+  private Point robotPoint;
 
   public GameView(Context context, AttributeSet attrs) {
       super(context, attrs);
@@ -29,7 +30,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
     thread = new MainThread(getHolder(), this);
-    robotSprite = new RobotSprite(this, BitmapFactory.decodeResource(this.getResources(), R.drawable.alien), 100, 50);
+    robotSprite = new RobotSprite(getContext(), new Rect(100, 100, 200, 200), Color.RED);
+    robotPoint = new Point(150, 150);
     thread.setRunning(true);
     thread.start();
   }
@@ -54,14 +56,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
       switch(event.getAction()){
         case MotionEvent.ACTION_DOWN:
         case MotionEvent.ACTION_MOVE: 
-            robotSprite.setMovingVector((int)event.getX() - robotSprite.getX(),(int)event.getY() - robotSprite.getY());
+            robotPoint.set((int)event.getX(), (int)event.getY());
             break;
       }
       return true;
   }
   
   public void update() {
-      robotSprite.update();
+      robotSprite.update(robotPoint);
       //if(MainActivity.robot.getHunger() > 0){ MainActivity.robot.setHunger(MainActivity.robot.getHunger() - 1); }
   }
   
