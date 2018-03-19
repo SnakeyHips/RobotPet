@@ -27,7 +27,7 @@ public class RobotSprite extends GameObject {
     private Bitmap[] bottomToTops;
  
     // Velocity of game character (pixel/millisecond)
-    public static final float VELOCITY = 0.1f;
+    public static final float VELOCITY = 0.5f;
  
     private int movingVectorX = 10;
     private int movingVectorY = 5;
@@ -88,7 +88,7 @@ public class RobotSprite extends GameObject {
             lastDrawNanoTime = now;
         }
         // Change nanoseconds to milliseconds (1 nanosecond = 1000000 milliseconds).
-        int deltaTime = (int) ((now - lastDrawNanoTime) / 1000000);
+        int deltaTime = (int)((now - lastDrawNanoTime) / 1000000);
  
         // Distance moves
         float distance = VELOCITY * deltaTime;
