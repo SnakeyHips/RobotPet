@@ -84,11 +84,7 @@ public class RobotSprite  {
     private Bitmap[] bottomToTops;
  
     // Velocity of game character (pixel/millisecond)
-<<<<<<< HEAD
     public static final float VELOCITY = 0.05f;
-=======
-    public static final float VELOCITY = 0.5f;
->>>>>>> fc5730ebeaa99ad9fd7d3dca5753835c1922e459
  
     private int movingVectorX = 10;
     private int movingVectorY = 5;
@@ -149,7 +145,7 @@ public class RobotSprite  {
             lastDrawNanoTime = now;
         }
         // Change nanoseconds to milliseconds (1 nanosecond = 1000000 milliseconds).
-        int deltaTime = (int)((now - lastDrawNanoTime) / 1000000);
+        int deltaTime = (int) ((now - lastDrawNanoTime) / 1000000);
  
         // Distance moves
         float distance = (VELOCITY * deltaTime);
