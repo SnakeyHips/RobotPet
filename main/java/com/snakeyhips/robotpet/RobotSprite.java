@@ -1,16 +1,73 @@
 package com.snakeyhips.robotpet;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
+import android.graphics.Matrix;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
- 
-public class RobotSprite extends GameObject {
- 
+public class RobotSprite  {
+
+    private Bitmap sprite;
+    private int x;
+    private int y;
+
+    private int maxX;
+    private int minX;
+
+    private Animation idle;
+    private Animation walkRight;
+    private Animation walkLeft;
+
+    public RobotSprite(Context context, Bitmap sprite, int x, int y, int maxX, int minX){
+        this.sprite = sprite;
+        this.x = x;
+        this.y = y;
+        this.maxX = maxX;
+        this.minX = minX;
+
+        Bitmap idleImg = BitmapFactory.decodeResource(context.getResources(), R.drawable.alien);
+        Bitmap walk1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.alien_walk1);
+        Bitmap walk2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.alien_walk2);
+
+        idle = new Animation(new Bitmap[]{idleImg}, 2);
+        walkRight = new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
+
+        Matrix m = new Matrix();
+        m.preScale(-1, 1);
+        walk1 = Bitmap.createBitmap(walk1, 0, 0, walk1.getWidth(), walk1.getHeight(), m, false);
+        walk2 = Bitmap.createBitmap(walk2, 0, 0, walk2.getWidth(), walk2.getHeight(), m, false);
+
+        walkLeft = new new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
+    }
+
+    public void draw(Canvas canvas){
+        canvas.drawBitmap(sprite, 100, 100, null);
+    }
+
+    public int getX(){
+        return x;
+    }
+
+    public void setX(int x){
+        this.x = x;
+    }
+
+    public int getY(){
+        return y;
+    }
+
+    public void update(){
+        if( x < minX){
+            x = minX;
+        }
+        if(x > maxX) {
+            x = maxX;
+        }
+
+    }
+
+    /* vector method
     private static final int ROW_TOP_TO_BOTTOM = 0;
     private static final int ROW_RIGHT_TO_LEFT = 1;
     private static final int ROW_LEFT_TO_RIGHT = 2;
@@ -27,7 +84,7 @@ public class RobotSprite extends GameObject {
     private Bitmap[] bottomToTops;
  
     // Velocity of game character (pixel/millisecond)
-    public static final float VELOCITY = 0.1f;
+    public static final float VELOCITY = 0.05f;
  
     private int movingVectorX = 10;
     private int movingVectorY = 5;
@@ -91,7 +148,7 @@ public class RobotSprite extends GameObject {
         int deltaTime = (int) ((now - lastDrawNanoTime) / 1000000);
  
         // Distance moves
-        float distance = VELOCITY * deltaTime;
+        float distance = (VELOCITY * deltaTime);
  
         double movingVectorLength = Math.sqrt(movingVectorX * movingVectorX + movingVectorY * movingVectorY);
  
@@ -147,5 +204,5 @@ public class RobotSprite extends GameObject {
     public void setMovingVector(int movingVectorX, int movingVectorY)  {
         this.movingVectorX = movingVectorX;
         this.movingVectorY = movingVectorY;
-    }
+    }*/
 }

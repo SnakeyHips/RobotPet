@@ -2,60 +2,19 @@ package com.snakeyhips.robotpet;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Rect;
 
 public class Animation {
-    
-    Bitmap bitmapSheet;
-    String bitmapName;
-    private Rect sourceRect;
-    private int frameCount;
-    private int currentFrame;
-    private long frameTicker;
-    private int framePeriod;
-    private int frameWidth;
-    private int frameHeight;
-    int pixelsPerMetre;
 
-    Animation(Context context, String bitmapName, float frameHeight,
-              float frameWidth, int animFps, int frameCount, int pixelsPerMetre) {
-        this.currentFrame = 0;
-        this.frameCount = frameCount;
-        this.frameWidth = (int) frameWidth * pixelsPerMetre;
-        this.frameHeight = (int) frameHeight * pixelsPerMetre;
-        sourceRect = new Rect(0, 0, this.frameWidth, this.frameHeight);
-        framePeriod = 1000 / animFps;
-        frameTicker = 01;
-        this.bitmapName = "" + bitmapName;
-        this.pixelsPerMetre = pixelsPerMetre;
-    }
-
-    public Rect getCurrentFrame(long time, float xVelocity, boolean moves) {
-        //Only animate if the object is moving
-        if (xVelocity != 0 || moves == false) {
-            frameTicker = time;
-            currentFrame++;
-            if (currentFrame >= frameCount) {
-                currentFrame = 0;
-            }
-        }
-
-
-        //Update the left and right values of the source of the next frame on the spritesheet
-        this.sourceRect.left = currentFrame * frameWidth;
-        this.sourceRect.right = this.sourceRect.left + frameWidth;
-
-        return sourceRect;
-    }
-    
-    /*other method
-    private Bitmap[] = frames;
+    private Bitmap[] frames;
     private int frameIndex;
     private float frameTime;
     private long lastFrame;
     private boolean isPlaying = false;
     
-    public boolen getIsPlaying(){
+    public boolean getIsPlaying(){
       return isPlaying;
     }
  
@@ -76,11 +35,12 @@ public class Animation {
       lastFrame = System.currentTimeMillis();
     }
  
-    public void draw(Canvas canvas, Rect desintationRect){
+    public void draw(Canvas canvas, Rect destination){
       if(!isPlaying){
         return;
+      } else{
+          canvas.drawBitmap(frames[frameIndex], null, destination, new Paint());
       }
-      canvas.drawBitmap(frames[frameIndex], null, destinationRect, new Paint());
     }
  
     public void update(){
@@ -92,5 +52,5 @@ public class Animation {
         frameIndex = frameIndex >= frames.length ? 0 : frameIndex;
         lastFrame = System.currentTimeMillis();
       }
-    }*/
+    }
 }
