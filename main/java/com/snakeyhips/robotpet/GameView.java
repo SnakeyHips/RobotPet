@@ -14,8 +14,7 @@ import android.view.SurfaceView;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   private MainThread thread;
-  private RobotSprite robotSprite;
-  private Point robotPoint;
+  private RobotCharacter robotCharacter;
 
   public GameView(Context context, AttributeSet attrs) {
       super(context, attrs);
@@ -29,9 +28,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
+    robotCharacter = new RobotCharacter(this, BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi1), 100, 50);
+    //robotPoint = new Point(Resources.getSystem().getDisplayMetrics().widthPixels/2, Resources.getSystem().getDisplayMetrics().heightPixels/2);
     thread = new MainThread(getHolder(), this);
-    robotSprite = new RobotSprite(getContext());
-    robotPoint = new Point(Resources.getSystem().getDisplayMetrics().widthPixels/2, Resources.getSystem().getDisplayMetrics().heightPixels/2);
     thread.setRunning(true);
     thread.start();
   }
@@ -54,16 +53,15 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   @Override
   public boolean onTouchEvent(MotionEvent event){
       switch(event.getAction()){
-        case MotionEvent.ACTION_DOWN:
-        case MotionEvent.ACTION_MOVE: 
-            robotPoint.set((int)event.getX(), (int)event.getY());
-            break;
+        case MotionEvent.ACTION_DOWN: 
+          robotCharacter.setMovingVector((int)event.getX() - this.chibi1.getX(), (int)event.getY() - this.chibi1.getY());
+          break;
       }
       return true;
   }
   
   public void update() {
-      robotSprite.update(robotPoint);
+      robotCharacter.update();
       //if(MainActivity.robot.getHunger() > 0){ MainActivity.robot.setHunger(MainActivity.robot.getHunger() - 1); }
   }
   
@@ -72,7 +70,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
     if(canvas != null){
         super.draw(canvas);
         canvas.drawColor(Color.WHITE);
-        robotSprite.draw(canvas);
+        robotCharacter.draw(canvas);
     }
   }       
 }
