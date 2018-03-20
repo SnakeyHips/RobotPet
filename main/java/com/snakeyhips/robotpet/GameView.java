@@ -31,6 +31,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   public void surfaceCreated(SurfaceHolder holder) {
     robotCharacter = new RobotCharacter(this, BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi1), 
                                         this.getWidth()/2, this.getHeight()/2);
+    frameCount = 0;
     thread = new MainThread(getHolder(), this);
     thread.setRunning(true);
     thread.start();
