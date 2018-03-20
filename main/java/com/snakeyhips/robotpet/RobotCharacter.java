@@ -98,8 +98,8 @@ public class RobotCharacter extends GameObject {
   double movingVectorLength = Math.sqrt(movingVectorX * movingVectorX + movingVectorY * movingVectorY);
 
   // Calculate the new position of the game character.
-  this.x = x + (int)(distance * movingVectorX / movingVectorLength);
-  this.y = y + (int)(distance * movingVectorY / movingVectorLength);
+  this.x += (int)(distance * movingVectorX / movingVectorLength);
+  this.y += (int)(distance * movingVectorY / movingVectorLength);
 
   // When the game's character touches the edge of the screen, then change direction
 
