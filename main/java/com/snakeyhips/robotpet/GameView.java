@@ -14,7 +14,7 @@ import android.view.SurfaceView;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   private MainThread thread;
-  private GameObject robotSprite;
+  private RobotSprite robotSprite;
   private Point robotPoint;
 
   public GameView(Context context, AttributeSet attrs) {
@@ -30,10 +30,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
     thread = new MainThread(getHolder(), this);
-    robotSprite = new GameObject(getContext(), new Rect(100, 100, 200, 200),
-                                BitmapFactory.decodeResource(context.getResources(), R.drawable.alien),
-                                BitmapFactory.decodeResource(context.getResources(), R.drawable.alien_walk1),
-                                BitmapFactory.decodeResource(context.getResources(), R.drawable.alien_walk2));
+    robotSprite = new RobotSprite(getContext());
     robotPoint = new Point(Resources.getSystem().getDisplayMetrics().widthPixels/2, Resources.getSystem().getDisplayMetrics().heightPixels/2);
     thread.setRunning(true);
     thread.start();
