@@ -35,7 +35,7 @@ public class RobotCharacter extends GameObject {
  private int viewWidth;
  private int viewHeight;
 
- public RobotCharacter(int viewWidth, int viewHeight, Bitmap image, int x, int y) {
+ public RobotCharacter(Bitmap image, int viewWidth, int viewHeight, int x, int y) {
   super(image, 4, 3, x, y);
   
   this.viewWidth = viewWidth;
