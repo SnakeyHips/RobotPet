@@ -105,7 +105,7 @@ public class RobotCharacter extends GameObject {
    movingVectorY = -movingVectorY;
   }
 
-  // rowUsing
+  // rowUsing - put movingVectoxX == 0 if here for idle animations
   if (movingVectorX > 0) {
    if (movingVectorY > 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
     rowUsing = ROW_TOP_TO_BOTTOM;
