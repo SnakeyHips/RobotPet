@@ -29,8 +29,8 @@ public class RobotCharacter extends GameObject {
  // Velocity of game character (pixel/millisecond)
  public static final float VELOCITY = 0.5 f;
 
- private int movingVectorX = 10;
- private int movingVectorY = 5;
+ private int movingVectorX = Resources.getSystem().getDisplayMetrics().widthPixels/2;
+ private int movingVectorY = Resources.getSystem().getDisplayMetrics().heightPixels/2;
 
  private long lastDrawNanoTime = -1;
 
