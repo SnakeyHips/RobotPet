@@ -89,7 +89,6 @@ public class RobotCharacter extends GameObject {
   y += (int)(VELOCITY * movingVectorY / movingVectorLength);
 
   // When the game's character touches the edge of the screen, then change direction
-
   if (x < 0) {
    x = 0;
    movingVectorX = -movingVectorX;
@@ -127,7 +126,7 @@ public class RobotCharacter extends GameObject {
  }
 
  public void draw(Canvas canvas) {
-  Bitmap bitmap = this.getCurrentMoveBitmap();
+  Bitmap bitmap = getCurrentMoveBitmap();
   canvas.drawBitmap(bitmap, x, y, null);
  }
 
