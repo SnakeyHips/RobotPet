@@ -63,9 +63,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   public void update() {
     if(fps => 60){
-      fps = 0;
       robotCharacter.update();
       if(MainActivity.robot.getHunger() > 0){ MainActivity.robot.setHunger(MainActivity.robot.getHunger() - 1); }
+      fps = 0;
     } else {
       fps++;
     }
