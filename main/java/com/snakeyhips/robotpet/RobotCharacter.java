@@ -81,24 +81,12 @@ public class RobotCharacter extends GameObject {
   if (colUsing >= this.colCount) {
    this.colUsing = 0;
   }
-  // Current time in nanoseconds
-  long now = System.nanoTime();
-
-  // Never once did draw.
-  if (lastDrawNanoTime == -1) {
-   lastDrawNanoTime = now;
-  }
-  // Change nanoseconds to milliseconds (1 nanosecond = 1000000 milliseconds).
-  int deltaTime = (int)((now - lastDrawNanoTime) / 1000000);
-
-  // Distance moves
-  float distance = VELOCITY * deltaTime;
 
   double movingVectorLength = Math.sqrt(movingVectorX * movingVectorX + movingVectorY * movingVectorY);
 
   // Calculate the new position of the game character.
-  this.x += (int)(distance * movingVectorX / movingVectorLength);
-  this.y += (int)(distance * movingVectorY / movingVectorLength);
+  this.x += (int)(VELOCITY * movingVectorX / movingVectorLength);
+  this.y += (int)(VELOCITY * movingVectorY / movingVectorLength);
 
   // When the game's character touches the edge of the screen, then change direction
 
@@ -141,8 +129,6 @@ public class RobotCharacter extends GameObject {
  public void draw(Canvas canvas) {
   Bitmap bitmap = this.getCurrentMoveBitmap();
   canvas.drawBitmap(bitmap, x, y, null);
-  // Last draw time.
-  this.lastDrawNanoTime = System.nanoTime();
  }
 
  public void setMovingVector(int movingVectorX, int movingVectorY) {
