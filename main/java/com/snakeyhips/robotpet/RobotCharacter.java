@@ -37,6 +37,7 @@ public class RobotCharacter extends GameObject {
 
  public RobotCharacter(int viewWidth, int viewHeight, Bitmap image, int x, int y) {
   super(image, 4, 3, x, y);
+  
   this.viewWidth = viewWidth;
   this.viewHeight = viewHeight;
   movingVectorX = viewWidth/2;
@@ -47,7 +48,7 @@ public class RobotCharacter extends GameObject {
   leftToRights = new Bitmap[colCount];
   bottomToTops = new Bitmap[colCount];
 
-  for (int col = 0; col < this.colCount; col++) {
+  for (int col = 0; col < colCount; col++) {
    topToBottoms[col] = createSubImageAt(ROW_TOP_TO_BOTTOM, col);
    rightToLefts[col] = createSubImageAt(ROW_RIGHT_TO_LEFT, col);
    leftToRights[col] = createSubImageAt(ROW_LEFT_TO_RIGHT, col);
