@@ -42,37 +42,37 @@ public class RobotCharacter extends GameObject {
   movingVectorX = viewWidth/2;
   movingVectorY = viewHeight/2;
 
-  this.topToBottoms = new Bitmap[colCount]; // 3
-  this.rightToLefts = new Bitmap[colCount]; // 3
-  this.leftToRights = new Bitmap[colCount]; // 3
-  this.bottomToTops = new Bitmap[colCount]; // 3
+  topToBottoms = new Bitmap[colCount];
+  rightToLefts = new Bitmap[colCount];
+  leftToRights = new Bitmap[colCount];
+  bottomToTops = new Bitmap[colCount];
 
   for (int col = 0; col < this.colCount; col++) {
-   this.topToBottoms[col] = this.createSubImageAt(ROW_TOP_TO_BOTTOM, col);
-   this.rightToLefts[col] = this.createSubImageAt(ROW_RIGHT_TO_LEFT, col);
-   this.leftToRights[col] = this.createSubImageAt(ROW_LEFT_TO_RIGHT, col);
-   this.bottomToTops[col] = this.createSubImageAt(ROW_BOTTOM_TO_TOP, col);
+   topToBottoms[col] = createSubImageAt(ROW_TOP_TO_BOTTOM, col);
+   rightToLefts[col] = createSubImageAt(ROW_RIGHT_TO_LEFT, col);
+   leftToRights[col] = createSubImageAt(ROW_LEFT_TO_RIGHT, col);
+   bottomToTops[col] = createSubImageAt(ROW_BOTTOM_TO_TOP, col);
   }
  }
 
  public Bitmap[] getMoveBitmaps() {
   switch (rowUsing) {
    case ROW_BOTTOM_TO_TOP:
-    return this.bottomToTops;
+    return bottomToTops;
    case ROW_LEFT_TO_RIGHT:
-    return this.leftToRights;
+    return leftToRights;
    case ROW_RIGHT_TO_LEFT:
-    return this.rightToLefts;
+    return rightToLefts;
    case ROW_TOP_TO_BOTTOM:
-    return this.topToBottoms;
+    return topToBottoms;
    default:
     return null;
   }
  }
 
  public Bitmap getCurrentMoveBitmap() {
-  Bitmap[] bitmaps = this.getMoveBitmaps();
-  return bitmaps[this.colUsing];
+  Bitmap[] bitmaps = getMoveBitmaps();
+  return bitmaps[colUsing];
  }
  
  public void update() {
