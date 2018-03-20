@@ -12,7 +12,6 @@ import android.graphics.Rect;
 public class RobotSprite  {
 
     private Rect rect;
-    private int color;
     private Bitmap sprite;
 
 
@@ -21,9 +20,8 @@ public class RobotSprite  {
     private Animation walkLeft;
     private AnimationManager animManager;
 
-    public RobotSprite(Context context, Rect rect, int color){
+    public RobotSprite(Context context, Rect rect){
         this.rect = rect;
-        this.color = color;
         
         //Get bitmaps
         Bitmap idleImg = BitmapFactory.decodeResource(context.getResources(), R.drawable.alien);
