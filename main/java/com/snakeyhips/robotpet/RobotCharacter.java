@@ -76,9 +76,9 @@ public class RobotCharacter extends GameObject {
  }
  
  public void update() {
-  this.colUsing++;
-  if (colUsing >= this.colCount) {
-   this.colUsing = 0;
+  colUsing++;
+  if (colUsing >= colCount) {
+   colUsing = 0;
   }
 
   double movingVectorLength = Math.sqrt(movingVectorX * movingVectorX + movingVectorY * movingVectorY);
