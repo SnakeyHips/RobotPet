@@ -26,8 +26,8 @@ public class RobotCharacter extends GameObject {
  private Bitmap[] topToBottoms;
  private Bitmap[] bottomToTops;
 
- // Velocity of game character (pixel/millisecond)
- public static final float VELOCITY = 2.5 f;
+ // Velocity of game character (pixels per update)
+ private float velocity = 2.5f;
 
  private int movingVectorX;
  private int movingVectorY;
@@ -85,8 +85,8 @@ public class RobotCharacter extends GameObject {
   double movingVectorLength = Math.sqrt(movingVectorX * movingVectorX + movingVectorY * movingVectorY);
 
   // Calculate the new position of the game character.
-  x += (int)(VELOCITY * movingVectorX / movingVectorLength);
-  y += (int)(VELOCITY * movingVectorY / movingVectorLength);
+  x += (int)(velocity * movingVectorX / movingVectorLength);
+  y += (int)(velocity * movingVectorY / movingVectorLength);
 
   // When the game's character touches the edge of the screen, then change direction
   if (x < 0) {
