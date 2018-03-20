@@ -55,7 +55,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   public boolean onTouchEvent(MotionEvent event){
       switch(event.getAction()){
         case MotionEvent.ACTION_DOWN: 
-          robotCharacter.setMovingVector((int)event.getX() - this.chibi1.getX(), (int)event.getY() - this.chibi1.getY());
+          robotCharacter.setMovingVector((int)event.getX() - robotCharacter.getX(), (int)event.getY() - robotCharacter.getY());
           break;
       }
       return true;
