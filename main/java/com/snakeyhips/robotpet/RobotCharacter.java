@@ -32,16 +32,15 @@ public class RobotCharacter extends GameObject {
  private int movingVectorX;
  private int movingVectorY;
 
- private long lastDrawNanoTime = -1;
+ private int viewWidth;
+ private int viewHeight;
 
- private GameView gameView;
-
- public RobotCharacter(GameView gameView, Bitmap image, int x, int y) {
+ public RobotCharacter(int viewWidth, int viewHeight, Bitmap image, int x, int y) {
   super(image, 4, 3, x, y);
-
-  this.gameView = gameView;
-  movingVectorX = gameView.getWidth()/2;
-  movingVectorY = gameView.getHeight()/2;
+  this.viewWidth = viewWidth;
+  this.viewHeight = viewHeight;
+  movingVectorX = viewWidth/2;
+  movingVectorY = viewHeight/2;
 
   this.topToBottoms = new Bitmap[colCount]; // 3
   this.rightToLefts = new Bitmap[colCount]; // 3
@@ -85,43 +84,43 @@ public class RobotCharacter extends GameObject {
   double movingVectorLength = Math.sqrt(movingVectorX * movingVectorX + movingVectorY * movingVectorY);
 
   // Calculate the new position of the game character.
-  this.x += (int)(VELOCITY * movingVectorX / movingVectorLength);
-  this.y += (int)(VELOCITY * movingVectorY / movingVectorLength);
+  x += (int)(VELOCITY * movingVectorX / movingVectorLength);
+  y += (int)(VELOCITY * movingVectorY / movingVectorLength);
 
   // When the game's character touches the edge of the screen, then change direction
 
-  if (this.x < 0) {
-   this.x = 0;
-   this.movingVectorX = -this.movingVectorX;
-  } else if (this.x > this.gameView.getWidth() - width) {
-   this.x = this.gameView.getWidth() - width;
-   this.movingVectorX = -this.movingVectorX;
+  if (x < 0) {
+   x = 0;
+   movingVectorX = -movingVectorX;
+  } else if (x > viewWidth - width) {
+   x = viewWidth - width;
+   movingVectorX = -movingVectorX;
   }
 
-  if (this.y < 0) {
-   this.y = 0;
-   this.movingVectorY = -this.movingVectorY;
-  } else if (this.y > this.gameView.getHeight() - height) {
-   this.y = this.gameView.getHeight() - height;
-   this.movingVectorY = -this.movingVectorY;
+  if (y < 0) {
+   y = 0;
+   movingVectorY = -movingVectorY;
+  } else if (y > viewHeight - height) {
+   y = viewHeight - height;
+   movingVectorY = -movingVectorY;
   }
 
   // rowUsing
   if (movingVectorX > 0) {
    if (movingVectorY > 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
-    this.rowUsing = ROW_TOP_TO_BOTTOM;
+    rowUsing = ROW_TOP_TO_BOTTOM;
    } else if (movingVectorY < 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
-    this.rowUsing = ROW_BOTTOM_TO_TOP;
+    rowUsing = ROW_BOTTOM_TO_TOP;
    } else {
-    this.rowUsing = ROW_LEFT_TO_RIGHT;
+    rowUsing = ROW_LEFT_TO_RIGHT;
    }
   } else {
    if (movingVectorY > 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
-    this.rowUsing = ROW_TOP_TO_BOTTOM;
+    rowUsing = ROW_TOP_TO_BOTTOM;
    } else if (movingVectorY < 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
-    this.rowUsing = ROW_BOTTOM_TO_TOP;
+    rowUsing = ROW_BOTTOM_TO_TOP;
    } else {
-    this.rowUsing = ROW_RIGHT_TO_LEFT;
+    rowUsing = ROW_RIGHT_TO_LEFT;
    }
   }
  }
