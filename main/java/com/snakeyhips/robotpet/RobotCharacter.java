@@ -34,12 +34,12 @@ public class RobotCharacter extends GameObject {
 
  private long lastDrawNanoTime = -1;
 
- private GameSurface gameSurface;
+ private GameView gameView;
 
- public ChibiCharacter(GameSurface gameSurface, Bitmap image, int x, int y) {
+ public RobotCharacter(GameView gameView, Bitmap image, int x, int y) {
   super(image, 4, 3, x, y);
 
-  this.gameSurface = gameSurface;
+  this.gameView = gameView;
 
   this.topToBottoms = new Bitmap[colCount]; // 3
   this.rightToLefts = new Bitmap[colCount]; // 3
@@ -104,16 +104,16 @@ public class RobotCharacter extends GameObject {
   if (this.x < 0) {
    this.x = 0;
    this.movingVectorX = -this.movingVectorX;
-  } else if (this.x > this.gameSurface.getWidth() - width) {
-   this.x = this.gameSurface.getWidth() - width;
+  } else if (this.x > this.gameView.getWidth() - width) {
+   this.x = this.gameView.getWidth() - width;
    this.movingVectorX = -this.movingVectorX;
   }
 
   if (this.y < 0) {
    this.y = 0;
    this.movingVectorY = -this.movingVectorY;
-  } else if (this.y > this.gameSurface.getHeight() - height) {
-   this.y = this.gameSurface.getHeight() - height;
+  } else if (this.y > this.gameView.getHeight() - height) {
+   this.y = this.gameView.getHeight() - height;
    this.movingVectorY = -this.movingVectorY;
   }
 
