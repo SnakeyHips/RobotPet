@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -29,7 +27,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
 
   @Override
   public void surfaceCreated(SurfaceHolder holder) {
-    robotCharacter = new RobotCharacter(BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi1), 
+    robotCharacter = new RobotCharacter(BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi2),
                                         this.getWidth(), this.getHeight(), this.getWidth()/2, this.getHeight()/2);
     frameCount = 0;
     thread = new MainThread(getHolder(), this);
@@ -64,7 +62,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   public void update() {
     frameCount++;
-    if(frameCount => 60){
+    if(frameCount >= 30){
       robotCharacter.update();
       if(MainActivity.robot.getHunger() > 0){ MainActivity.robot.setHunger(MainActivity.robot.getHunger() - 1); }
       frameCount = 0;

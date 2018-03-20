@@ -27,7 +27,7 @@ public class RobotCharacter extends GameObject {
  private Bitmap[] bottomToTops;
 
  // Velocity of game character (pixels per update)
- private float velocity = 2.5f;
+ private float velocity = 10.0f;
 
  private int movingVectorX;
  private int movingVectorY;
