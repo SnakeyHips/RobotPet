@@ -15,7 +15,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   
   private MainThread thread;
   private RobotCharacter robotCharacter;
-  private int fps;
+  private int frameCount;
 
   public GameView(Context context, AttributeSet attrs) {
       super(context, attrs);
@@ -62,12 +62,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   }
   
   public void update() {
-    if(fps => 60){
+    if(frameCount => 60){
       robotCharacter.update();
       if(MainActivity.robot.getHunger() > 0){ MainActivity.robot.setHunger(MainActivity.robot.getHunger() - 1); }
-      fps = 0;
+      frameCount = 0;
     } else {
-      fps++;
+      frameCount++;
     }
   }
   
