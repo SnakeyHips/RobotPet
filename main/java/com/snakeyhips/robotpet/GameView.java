@@ -62,7 +62,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback{
   }
   
   public void update() {
-    if(perSecond < 99){
+    if(perSecond => 60){
       perSecond = 0;
       robotCharacter.update();
       if(MainActivity.robot.getHunger() > 0){ MainActivity.robot.setHunger(MainActivity.robot.getHunger() - 1); }
