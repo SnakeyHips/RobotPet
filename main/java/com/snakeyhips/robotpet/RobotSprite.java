@@ -24,20 +24,16 @@ public class RobotSprite  {
     public RobotSprite(Context context, Rect rect, int color){
         this.rect = rect;
         this.color = color;
-
+        
+        //Get bitmaps
         Bitmap idleImg = BitmapFactory.decodeResource(context.getResources(), R.drawable.alien);
         Bitmap walk1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.alien_walk1);
         Bitmap walk2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.alien_walk2);
 
+        //Create animations from bitmaps
         idle = new Animation(new Bitmap[]{idleImg}, 2);
         walkRight = new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
-
-        Matrix m = new Matrix();
-        m.preScale(-1, 1);
-        walk1 = Bitmap.createBitmap(walk1, 0, 0, walk1.getWidth(), walk1.getHeight(), m, false);
-        walk2 = Bitmap.createBitmap(walk2, 0, 0, walk2.getWidth(), walk2.getHeight(), m, false);
-        walkLeft = new Animation(new Bitmap[]{walk1, walk2}, 0.5f);
-
+        walkLeft = new Animation(new Bitmap[]{Animation.reverse(walk1);, Animation.reverse(walk2)}, 0.5f);
         animManager = new AnimationManager(new Animation[]{idle, walkRight, walkLeft});
     }
 
@@ -68,6 +64,11 @@ public class RobotSprite  {
 
         animManager.playAnim(state);
         animManager.update();
+    }
+    
+    public void setMovingVector(int movingVectorX, int movingVectorY)  {
+        this.movingVectorX = movingVectorX;
+        this.movingVectorY = movingVectorY;
     }
 
     /* vector method
