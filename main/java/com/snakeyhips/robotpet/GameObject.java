@@ -11,20 +11,15 @@ import android.graphics.Rect;
 
 public abstract class GameObject {
 
- protected Bitmap image;
-
- protected final int rowCount;
- protected final int colCount;
-
- protected final int WIDTH;
- protected final int HEIGHT;
-
- protected final int width;
-
-
- protected final int height;
- protected int x;
- protected int y;
+ private Bitmap image;
+ private int rowCount;
+ private int colCount;
+ private int imageWidth;
+ private int imageHeight;
+ private int width;
+ private int height;
+ private int x;
+ private int y;
 
  public GameObject(Bitmap image, int rowCount, int colCount, int x, int y) {
 
@@ -35,15 +30,14 @@ public abstract class GameObject {
   this.x = x;
   this.y = y;
 
-  this.WIDTH = image.getWidth();
-  this.HEIGHT = image.getHeight();
+  this.imageWidth = image.getWidth();
+  this.imageHeight = image.getHeight();
 
-  this.width = this.WIDTH / colCount;
-  this.height = this.HEIGHT / rowCount;
+  this.width = this.imageWidth / colCount;
+  this.height = this.imageHeight / rowCount;
  }
 
-
- protected Bitmap createSubImageAt(int row, int col) {
+ privateBitmap createSubImageAt(int row, int col) {
   Bitmap subImage = Bitmap.createBitmap(image, col * width, row * height, width, height);
   return subImage;
  }
